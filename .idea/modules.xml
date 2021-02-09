@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/elibs2/elibs2.iml" filepath="$PROJECT_DIR$/elibs2/elibs2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ftc2/ftc2.iml" filepath="$PROJECT_DIR$/ftc2/ftc2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rlibx/rlibx.iml" filepath="$PROJECT_DIR$/rlibx/rlibx.iml" />
+    </modules>
+  </component>
+</project>
