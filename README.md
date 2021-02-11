@@ -14,7 +14,7 @@ beautiful, sexy, and "eeeee-lib" robotics library, elibsx!
   development, tenfold, at the very least.
 - Complex and extensible toolkits, allowing for total control over your robot while
   cutting down development time and effort significantly. 
-- Easily integratable with my library [Pathfinder](https://github.com/Wobblyyyy/pathfinder),
+- Easily integrable with my library [Pathfinder](https://github.com/Wobblyyyy/pathfinder),
   allowing for on-the-fly pathfinding, motion prediction, profiling, and
   planning.
 - Entirely modular and extensible libraries - ignore what you don't want. 
@@ -83,7 +83,7 @@ it as a gift - hand-written, commented, and curated, just specifically for you. 
   - Documentation ([here](https://google.com))
   
 ## Abstractions
-Here's a breif list of all of the major abstractions present in these libraries.
+Here's a brief list of all the major abstractions present in these libraries.
 - DcMotor
 - TalonSRX
 - Talon
