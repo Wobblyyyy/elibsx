@@ -30,6 +30,8 @@ package me.wobblyyyy.rlibx.hardware;
  * Interface shared by all physical components on the robot.
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public interface Component {
     /**

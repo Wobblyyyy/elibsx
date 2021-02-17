@@ -26,5 +26,12 @@
 
 package me.wobblyyyy.rlibx.interfaces;
 
+/**
+ * Core interface used by CR servos.
+ *
+ * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
+ */
 public interface CRServoCore {
 }

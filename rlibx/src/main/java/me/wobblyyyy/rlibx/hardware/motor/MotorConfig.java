@@ -38,6 +38,8 @@ import me.wobblyyyy.rlibx.hardware.encoder.Encoder;
  * </p>
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public class MotorConfig {
     /**

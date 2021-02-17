@@ -24,18 +24,24 @@
  *
  */
 
-package me.wobblyyyy.rlibx.interfaces;
+package me.wobblyyyy.rlibx.subsystem;
+
+import me.wobblyyyy.rlibx.hardware.Component;
+
+import java.util.ArrayList;
 
 /**
- * Core interface used by all hardware components.
+ * Interface used for subsystems.
  *
  * @author Colin Robertson
  * @since 0.1.0
  * @version 1.0.0
  */
-public interface ComponentCore {
+public interface SubsystemCore {
     /**
-     * Initialize the component.
+     * Get all of the components contained within that subsystem.
+     *
+     * @return a list of all of the components from the subsystem.
      */
-    void init();
+    ArrayList<Component> getComponents();
 }

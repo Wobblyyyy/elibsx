@@ -24,18 +24,23 @@
  *
  */
 
-package me.wobblyyyy.rlibx.interfaces;
+package me.wobblyyyy.rlibx.error;
 
 /**
- * Core interface used by all hardware components.
+ * Exception to be thrown when a number that is not an integer is in a place
+ * where the number should be an integer.
  *
  * @author Colin Robertson
  * @since 0.1.0
  * @version 1.0.0
  */
-public interface ComponentCore {
+public class NotAnIntegerException extends Exception {
     /**
-     * Initialize the component.
+     * Create a new NotAnIntegerException.
+     *
+     * @param exception the exception's error message.
      */
-    void init();
+    public NotAnIntegerException(String exception) {
+        super(exception);
+    }
 }

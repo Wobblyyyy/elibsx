@@ -30,6 +30,8 @@ package me.wobblyyyy.rlibx.hardware.motor;
  * Different modes that motors can run in.
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public enum MotorRunMode {
     /**

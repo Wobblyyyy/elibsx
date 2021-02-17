@@ -24,7 +24,7 @@
  *
  */
 
-package me.wobblyyyy.rlibx.input;
+package me.wobblyyyy.rlibx.input.controllers;
 
 import me.wobblyyyy.rlibx.interfaces.ControllerCore;
 
@@ -38,6 +38,8 @@ import me.wobblyyyy.rlibx.interfaces.ControllerCore;
  * </p>
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public class Controller {
     /**

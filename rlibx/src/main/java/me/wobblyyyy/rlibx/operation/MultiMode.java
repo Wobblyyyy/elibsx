@@ -24,18 +24,25 @@
  *
  */
 
-package me.wobblyyyy.rlibx.interfaces;
+package me.wobblyyyy.rlibx.operation;
 
 /**
- * Core interface used by all hardware components.
+ * A type of mode situation in which a robot can operate in - multiple of them.
+ *
+ * <p>
+ * MultiMode is designed to be as extensible as possible. By using different
+ * data structures to store information about different modes and all that
+ * cool stuff, we can manage to smoothly switch between them, etc.
+ * </p>
  *
  * @author Colin Robertson
  * @since 0.1.0
  * @version 1.0.0
  */
-public interface ComponentCore {
-    /**
-     * Initialize the component.
-     */
-    void init();
+public class MultiMode {
+    private MultiModeManager manager;
+
+    public MultiMode() {
+
+    }
 }

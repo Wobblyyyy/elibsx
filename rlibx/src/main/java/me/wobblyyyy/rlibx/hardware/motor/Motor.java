@@ -55,40 +55,57 @@ import me.wobblyyyy.rlibx.interfaces.MotorCore;
  * </p>
  *
  * @author Colin Robertson
+ * @see MotorConfig
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public class Motor implements Component {
     /**
      * The motor's configuration.
+     *
+     * @see MotorConfig
      */
     private MotorConfig config;
 
     /**
      * Minimum power value.
+     *
+     * @see MotorConfig#getMin()
      */
     private double min;
 
     /**
      * Maximum power value.
+     *
+     * @see MotorConfig#getMax()
      */
     private double max;
 
     /**
      * Power multiplier.
+     *
+     * @see MotorConfig#getMultiplier()
      */
     private double multiplier;
 
     /**
      * The motor's power deadzone.
+     *
+     * @see MotorConfig#getDeadzone()
      */
     private double deadzone;
 
     /**
      * Should the motor use lazy power setting?
+     *
+     * @see MotorConfig#isLazy()
      */
     private boolean isLazy;
 
     /**
      * The motor's direction.
+     *
+     * @see MotorConfig#getDirection()
      */
     private Direction direction;
 
@@ -140,6 +157,8 @@ public class Motor implements Component {
      *
      * @param motor  the motor's core element.
      * @param config the motor's configuration.
+     * @see MotorCore
+     * @see MotorConfig
      */
     public Motor(MotorCore motor,
                  MotorConfig config) {
@@ -168,6 +187,7 @@ public class Motor implements Component {
      * Get the motor's minimum value.
      *
      * @return the motor's minimum value.
+     * @see Motor#min
      */
     public double getMin() {
         return config.getMin();
@@ -177,6 +197,7 @@ public class Motor implements Component {
      * Get the motor's maximum value.
      *
      * @return the motor's maximum value.
+     * @see Motor#max
      */
     public double getMax() {
         return config.getMax();
@@ -186,6 +207,7 @@ public class Motor implements Component {
      * Get the motor's multiplier.
      *
      * @return the motor's multiplier.
+     * @see Motor#multiplier
      */
     public double getMultiplier() {
         return config.getMultiplier();
@@ -195,6 +217,7 @@ public class Motor implements Component {
      * Get the deadzone of the motor.
      *
      * @return the motor's deadzone.
+     * @see MotorConfig#getDirection()
      */
     public double getDeadzone() {
         return config.getDeadzone();
@@ -204,6 +227,7 @@ public class Motor implements Component {
      * Get the direction of the motor.
      *
      * @return the motor's direction.
+     * @see Direction
      */
     public Direction getDirection() {
         return config.getDirection();
@@ -213,6 +237,7 @@ public class Motor implements Component {
      * Get whether or not the motor is configured to use lazy mode.
      *
      * @return whether or not the motor is configured to use lazy mode.
+     * @see Motor#isLazy()
      */
     public boolean isLazy() {
         return config.isLazy();
@@ -258,6 +283,13 @@ public class Motor implements Component {
         return !lazyPowerComparator.compare(this.power, power);
     }
 
+    /**
+     * Check to see if the duration of time elapsed since the last time power
+     * was set to the motor is long enough to warrant re-setting the power.
+     *
+     * @param time the current system time.
+     * @return if the timestamps are far enough apart.
+     */
     private boolean hasTooMuchTimeElapsed(double time) {
         /*
          * This condition, like the power values condition, needs to be
@@ -296,6 +328,8 @@ public class Motor implements Component {
      *
      * @param power the new suggested power value.
      * @return whether or not the motor's power should be updated.
+     * @see Motor#hasTooMuchTimeElapsed(double)
+     * @see Motor#arePowerValuesFarEnough(double)
      */
     private boolean shouldReSet(double power, double time) {
         return (hasTooMuchTimeElapsed(time) && arePowerValuesFarEnough(power));
@@ -305,6 +339,7 @@ public class Motor implements Component {
      * Apply power to the core motor component.
      *
      * @param power the power value to apply.
+     * @see MotorCore#setPower(double)
      */
     private void applyPower(double power) {
         /*
@@ -337,6 +372,7 @@ public class Motor implements Component {
      * Apply a multiplier to a given power value.
      *
      * @return a multiplied power value.
+     * @see Motor#multiplier
      */
     private double applyMultiplier(double power) {
         return power * multiplier;
@@ -347,6 +383,7 @@ public class Motor implements Component {
      *
      * @param power the input power value.
      * @return the directional power value.
+     * @see Motor#direction
      */
     private double applyDirection(double power) {
         /*
@@ -375,6 +412,8 @@ public class Motor implements Component {
      *
      * @param power the input power.
      * @return the resulting clipped power value.
+     * @see Motor#min
+     * @see Motor#max
      */
     private double applyClip(double power) {
         /*
@@ -429,6 +468,10 @@ public class Motor implements Component {
      *
      * @param power the unmodified input power value.
      * @return a modified power value.
+     * @see Motor#applyDirection(double)
+     * @see Motor#applyMultiplier(double)
+     * @see Motor#applyClip(double)
+     * @see Motor#applyDeadzone(double)
      */
     private double applyModifications(double power) {
         /*
@@ -475,6 +518,9 @@ public class Motor implements Component {
      * </p>
      *
      * @param power the motor's power.
+     * @see Motor#applyModifications(double)
+     * @see Motor#shouldReSet(double, double)
+     * @see Motor#applyPower(double)
      */
     private void _set(double power) {
         /*
@@ -515,16 +561,21 @@ public class Motor implements Component {
     /**
      * Internal method to get the motor's power.
      *
+     * <p>
+     * If the motor is going forwards, we know the stored power value is
+     * positive.
+     *
+     * If the motor is going backwards, we need to invert the stored power
+     * value so that it's correct.
+     *
+     * Apply a direction to the power before returning that power value.
+     * </p>
+     *
      * @return the motor's power.
+     * @see Motor#applyDirection(double)
      */
     private double _get() {
         /*
-         * If the motor is going forwards, we know the stored power value is
-         * positive.
-         *
-         * If the motor is going backwards, we need to invert the stored power
-         * value so that it's correct.
-         *
          * Apply a direction to the power before returning that power value.
          */
         return applyDirection(power);
@@ -535,6 +586,7 @@ public class Motor implements Component {
      *
      * @param source the source - true = user, false = non-user
      * @return whether the given source can power the motor
+     * @see Motor#isUserControlled
      */
     private boolean canSourceControlPower(boolean source) {
         return (isUserControlled && source) || (!isUserControlled && !source);
@@ -554,6 +606,8 @@ public class Motor implements Component {
      *
      * @param power the power value to set to the motor.
      * @param user  is the controlling source a user?
+     * @see Motor#canSourceControlPower(boolean)
+     * @see Motor#_set(double)
      */
     public void setPower(double power,
                          boolean user) {
@@ -571,6 +625,7 @@ public class Motor implements Component {
      * Get the motor's power.
      *
      * @return the motor's power.
+     * @see Motor#_get()
      */
     public double getPower() {
         return _get();
@@ -592,6 +647,7 @@ public class Motor implements Component {
      * </p>
      *
      * @param power the power value to set to the motor.
+     * @see Motor#_set(double)
      */
     public void setPower(double power) {
         setPower(power, true);

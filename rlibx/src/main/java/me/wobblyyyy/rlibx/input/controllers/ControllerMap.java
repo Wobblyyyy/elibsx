@@ -24,7 +24,14 @@
  *
  */
 
-package me.wobblyyyy.rlibx.input;
+package me.wobblyyyy.rlibx.input.controllers;
 
+/**
+ * Prototype controller mapping - finish later.
+ *
+ * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
+ */
 public class ControllerMap {
 }

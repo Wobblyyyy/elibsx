@@ -36,6 +36,8 @@ package me.wobblyyyy.rlibx.manager;
  * </p>
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public class LinearMode extends Mode {
     /**
@@ -50,7 +52,15 @@ public class LinearMode extends Mode {
      * which has been deprecated since Java 1.8. Uh oh.
      * </p>
      *
+     * <p>
+     * Much of the same rules that apply to the {@link Mode} class still apply
+     * here. Code should be short and sweet in most cases. If you'd like to
+     * read a bit more into that, you can feel free to read the JavaDocs for
+     * the {@link Mode} class.
+     * </p>
+     *
      * @param runnable the mode's runnable.
+     * @see Mode
      */
     public LinearMode(Runnable runnable) {
         /*

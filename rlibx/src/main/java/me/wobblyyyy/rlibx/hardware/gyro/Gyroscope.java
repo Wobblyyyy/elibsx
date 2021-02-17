@@ -26,5 +26,12 @@
 
 package me.wobblyyyy.rlibx.hardware.gyro;
 
+/**
+ * Gyroscope controller class.
+ *
+ * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
+ */
 public class Gyroscope {
 }

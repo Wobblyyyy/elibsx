@@ -24,18 +24,24 @@
  *
  */
 
-package me.wobblyyyy.rlibx.interfaces;
+package me.wobblyyyy.rlibx.operation;
 
 /**
- * Core interface used by all hardware components.
+ * Single-mode robot operation - a robot that does one thing and one thing
+ * only. Maybe even well - who knows?
+ *
+ * <p>
+ * If you're working with FTC and FRC robots, there's a pretty good chance
+ * you can leave this class alone. However, if you're building a robot that
+ * has a single functionality you'd like to implement, you can use this class
+ * right here to do exactly that. No need to worry about having multiple
+ * different modes which can be switched between - you just have one thing
+ * to do here. Simple. (and sweet)
+ * </p>
  *
  * @author Colin Robertson
  * @since 0.1.0
  * @version 1.0.0
  */
-public interface ComponentCore {
-    /**
-     * Initialize the component.
-     */
-    void init();
+public class SingleMode {
 }

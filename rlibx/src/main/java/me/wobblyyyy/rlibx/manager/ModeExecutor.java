@@ -27,6 +27,7 @@
 package me.wobblyyyy.rlibx.manager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Manager class used in managing the execution of several different modes.
@@ -42,6 +43,8 @@ import java.util.ArrayList;
  * </p>
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public class ModeExecutor extends LinearMode {
     /**
@@ -52,21 +55,57 @@ public class ModeExecutor extends LinearMode {
     private final ArrayList<Mode> modes;
 
     /**
-     * Create a new ModeExecutor and begin the execution of all of the
-     * modes that were in the ArrayList of Mode(s) that you passed.
+     * Create a new ModeExecutor based on a single inputted mode.
      *
-     * @param modes all of the Mode elements that should begin execution on
-     *              the creation of the mode executor.
+     * <p>
+     * None of these modes will begin execution until the
+     * {@link ModeExecutor#start()} method has been called. Until that point,
+     * the modes will simply sit dormant.
+     * </p>
+     *
+     * <p>
+     * If you'd like to stop the execution of a mode executor before it has
+     * reached its natural conclusion, you can use the {@link ModeExecutor#stop()}
+     * method to do exactly that.
+     * </p>
+     *
+     * @param mode the mode that should be executed when this ModeExecutor
+     *             has its functionality used.
+     */
+    public ModeExecutor(Mode mode) {
+        this((ArrayList<Mode>) List.of(mode));
+    }
+
+    /**
+     * Create a new ModeExecutor based on an ArrayList of modes that should
+     * be executed with the mode executor.
+     *
+     * <p>
+     * None of these modes will begin execution until the
+     * {@link ModeExecutor#start()} method has been called. Until that point,
+     * the modes will simply sit dormant.
+     * </p>
+     *
+     * <p>
+     * If you'd like to stop the execution of a mode executor before it has
+     * reached its natural conclusion, you can use the {@link ModeExecutor#stop()}
+     * method to do exactly that.
+     * </p>
+     *
+     * @param modes a list of all of the modes that should be executed when
+     *              the mode executor's execution functionality is executed.
+     *              Damn, that's a lot of execution.
      */
     public ModeExecutor(ArrayList<Mode> modes) {
         /*
          * Pass a new Runnable element to the super-constructor.
          */
         super(() -> {
+            /*
+             * We want to start each of the inputted modes when the mode
+             * executor's functionality is called.
+             */
             for (Mode mode : modes) {
-                /*
-                 * Start each and every one of the modes.
-                 */
                 mode.start();
             }
         });
@@ -117,6 +156,10 @@ public class ModeExecutor extends LinearMode {
         for (Mode mode : modes) {
             /*
              * Stop all of the modes.
+             *
+             * Thread.stop() has been deprecated for ages - we should most
+             * certainly try to find another way of stopping linearly
+             * executed threads.
              */
             mode.stop();
         }

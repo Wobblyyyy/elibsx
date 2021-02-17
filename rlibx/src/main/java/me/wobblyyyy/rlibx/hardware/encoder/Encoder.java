@@ -39,6 +39,8 @@ import me.wobblyyyy.rlibx.interfaces.EncoderCore;
  * </p>
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public class Encoder implements Component {
     /**

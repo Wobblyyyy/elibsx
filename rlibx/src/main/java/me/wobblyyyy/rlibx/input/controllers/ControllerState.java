@@ -24,12 +24,14 @@
  *
  */
 
-package me.wobblyyyy.rlibx.input;
+package me.wobblyyyy.rlibx.input.controllers;
 
 /**
  * A class used for representing the state of a controller.
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public class ControllerState {
     /**

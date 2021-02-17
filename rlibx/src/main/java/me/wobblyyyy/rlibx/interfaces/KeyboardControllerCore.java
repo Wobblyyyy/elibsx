@@ -27,15 +27,12 @@
 package me.wobblyyyy.rlibx.interfaces;
 
 /**
- * Core interface used by all hardware components.
+ * Interface used to connect to a keyboard, which can then emulate a
+ * controller, thus giving you a bit more freedom when it comes to input.
  *
  * @author Colin Robertson
  * @since 0.1.0
  * @version 1.0.0
  */
-public interface ComponentCore {
-    /**
-     * Initialize the component.
-     */
-    void init();
+public interface KeyboardControllerCore extends ControllerCore {
 }

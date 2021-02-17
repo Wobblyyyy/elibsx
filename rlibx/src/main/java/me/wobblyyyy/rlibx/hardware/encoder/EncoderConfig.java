@@ -30,6 +30,8 @@ package me.wobblyyyy.rlibx.hardware.encoder;
  * Configuration class for encoders.
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public class EncoderConfig {
     /**

@@ -30,6 +30,8 @@ package me.wobblyyyy.rlibx.manager;
  * An enumeration of all the modes which the robot can operate in.
  *
  * @author Colin Robertson
+ * @since 0.1.0
+ * @version 1.0.0
  */
 public enum Modes {
     /**
