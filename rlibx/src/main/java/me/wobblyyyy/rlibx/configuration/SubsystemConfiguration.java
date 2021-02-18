@@ -24,7 +24,7 @@
  *
  */
 
-package me.wobblyyyy.rlibx.subsystem;
+package me.wobblyyyy.rlibx.configuration;
 
 import me.wobblyyyy.rlibx.configuration.Configuration;
 
