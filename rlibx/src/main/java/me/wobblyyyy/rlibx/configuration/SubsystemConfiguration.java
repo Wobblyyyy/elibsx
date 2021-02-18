@@ -26,8 +26,6 @@
 
 package me.wobblyyyy.rlibx.configuration;
 
-import me.wobblyyyy.rlibx.configuration.Configuration;
-
 import java.util.HashMap;
 
 /**
