@@ -66,8 +66,8 @@ public class SubsystemConfiguration extends Configuration {
      *
      * @param values the values that should be set.
      * @see Configuration
-     * @see Configuration#getDouble(String)
-     * @see Configuration#getInt(String)
+     * @see Configuration#Configuration(HashMap)
+     * @see Configuration#add(String, double) 
      */
     public SubsystemConfiguration(HashMap<String, Double> values) {
         super(values);

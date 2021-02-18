@@ -67,44 +67,30 @@ public class Motor implements Component {
     private final MotorCore motor;
     /**
      * The motor's configuration.
-     *
-     * @see MotorConfig
      */
     private MotorConfig config;
     /**
      * Minimum power value.
-     *
-     * @see MotorConfig#getMin()
      */
     private double min;
     /**
      * Maximum power value.
-     *
-     * @see MotorConfig#getMax()
      */
     private double max;
     /**
      * Power multiplier.
-     *
-     * @see MotorConfig#getMultiplier()
      */
     private double multiplier;
     /**
      * The motor's power deadzone.
-     *
-     * @see MotorConfig#getDeadzone()
      */
     private double deadzone;
     /**
      * Should the motor use lazy power setting?
-     *
-     * @see MotorConfig#isLazy()
      */
     private boolean isLazy;
     /**
      * The motor's direction.
-     *
-     * @see MotorConfig#getDirection()
      */
     private Direction direction;
     /**
@@ -145,8 +131,6 @@ public class Motor implements Component {
      *
      * @param motor  the motor's core element.
      * @param config the motor's configuration.
-     * @see MotorCore
-     * @see MotorConfig
      */
     public Motor(MotorCore motor,
                  MotorConfig config) {

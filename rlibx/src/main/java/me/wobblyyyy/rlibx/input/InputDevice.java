@@ -74,56 +74,329 @@ import java.util.HashMap;
  * compared to just two types of controllers.
  * </p>
  *
+ * <p>
+ * InputDevices rely on the {@link InputDevice#inputs} {@code HashMap} to keep
+ * track of input values. The design philosophy behind the {@code InputDevice}
+ * class was to centralize all things related to robot input, thus making it
+ * incredibly difficult to get lost on what isn't working and why not.
+ * </p>
+ *
+ * <p>
+ * For a common user, or a user who just wants to get a controller to work,
+ * regardless of anything else, {@code InputDevice} elements are just extra
+ * abstractions on top of the already rather uncomfortable
+ * {@link me.wobblyyyy.rlibx.input.controllers.Controller} class. However,
+ * when it comes to managing things like multiple streams of input, sensors,
+ * encoders, controllers, etc - using an {@code InputDevice} might start to
+ * seem like a more appealing option.
+ * </p>
+ *
  * @author Colin Robertson
- * @version 1.0.0
+ * @version 1.1.0
  * @since 0.1.0
  */
 public class InputDevice {
     /**
-     * All of the available input channels.
+     * A HashMap that stores all of the useful information that's needed to
+     * manage multiple inputs at the same time.
      *
      * <p>
-     * In total, there's 100 input channels that can be used - realistically,
-     * I need to know. When are you ever going to need more than 100 input
-     * channels for a single input device?
+     * Although this {@code HashMap} does support the use of Objects as
+     * values, meaning you can technically store whatever you'd like here,
+     * I'd like to say quickly that the intention of this class is to provide
+     * simple inputs. Not outputs. Not products. Not points. If a primitive
+     * value can't encapsulate whatever you're attempting to do, you're almost
+     * certainly trying to store way too much information in the input
+     * device you're working with.
      * </p>
+     *
+     * <p>
+     * A string key is used to track down different objects that are stored
+     * in the hash map from different locations in the codebase.
+     * </p>
+     *
+     * <p>
+     * The values stored in the HashMap are all notated in Object form. These
+     * values can easily be converted into doubles, integers, strings, etc.
+     * </p>
+     *
+     * @see InputDevice#getInt(String)
+     * @see InputDevice#getDouble(String)
+     * @see InputDevice#getString(String)
+     * @see InputDevice#getObject(String)
+     * @see InputDevice#getBoolean(String)
+     * @see InputDevice#set(String, Object)
+     * @see InputDevice#setAll(HashMap)
+     * @see InputDevice#setMultiple(HashMap)
      */
-    public double[] channels = new double[100];
+    private volatile HashMap<String, Object> inputs = new HashMap<>();
 
     /**
-     * Update the value of a single input channel.
-     *
-     * @param index the index of the input channel that should be updated.
-     * @param value the value of the input channel.
+     * Create a new InputDevice.
      */
-    public synchronized void update(int index,
-                                    double value) {
-        channels[index] = value;
+    public InputDevice() {
+
     }
 
     /**
-     * Update the value of the entire channel array.
+     * Set a given input key to have a certain value.
      *
-     * @param channels a new array of doubles - this will replace the current
-     *                 channel array entirely.
+     * <p>
+     * This only sets a single key - not multiple keys. If you'd like to set
+     * multiple keys at once, or import a HashMap and set it as the current
+     * input stream, you can feel free to do so with some other methods.
+     * </p>
+     *
+     * @param key   the key that should be set.
+     * @param value the value that the key should hold.
+     * @see InputDevice#inputs
+     * @see InputDevice#setAll(HashMap)
+     * @see InputDevice#setMultiple(HashMap)
      */
-    public synchronized void update(double[] channels) {
-        this.channels = channels;
+    public void set(String key,
+                    Object value) {
+        /*
+         * All we have to do is put the inputted parameters into a new
+         * HashMap entry for the inputs HashMap.
+         */
+        inputs.put(key, value);
     }
 
     /**
-     * Update several channels at once by using a HashMap to provide a list
-     * of channels and their values.
+     * Set the {@code inputs} HashMap to an entirely new HashMap that's
+     * passed as a parameter to this method call.
      *
-     * @param map a map. This map should represent the channels that should be
-     *            updated and the new values that they should have.
+     * <p>
+     * This method will reset the entire HashMap and replace it with whatever
+     * HashMap you provided as a parameter to this method.
+     * </p>
+     *
+     * @param inputs the new HashMap that should replace the existing inputs
+     *               HashMap.
+     * @see InputDevice#inputs
+     * @see InputDevice#set(String, Object)
+     * @see InputDevice#setMultiple(HashMap)
      */
-    public synchronized void updateAll(HashMap<Integer, Double> map) {
-        for (HashMap.Entry<Integer, Double> e : map.entrySet()) {
-            update(
+    public void setAll(HashMap<String, Object> inputs) {
+        /*
+         * We entirely over-write the existing inputs HashMap here.
+         *
+         * Instead of having to manually transfer all of the input keys and
+         * values over to a new HashMap, it's a wiser idea to just re-set
+         * the HashMap.
+         */
+        this.inputs = inputs;
+    }
+
+    /**
+     * Set multiple input channels to given values at the same time.
+     *
+     * <p>
+     * Unlike the {@link InputDevice#setAll(HashMap)} method, this method does
+     * not clear the original HashMap when adding values.
+     * </p>
+     *
+     * <p>
+     * Keys that are already contained within the HashMap will be overwritten
+     * by any new values that you put in here - just something to keep in
+     * the back of your head.
+     * </p>
+     *
+     * @param inputs a HashMap of String and Object pairs that will be added
+     *               to the existing input HashMap.
+     * @see InputDevice#inputs
+     * @see InputDevice#set(String, Object)
+     * @see InputDevice#setAll(HashMap)
+     */
+    public void setMultiple(HashMap<String, Object> inputs) {
+        /*
+         * For each of the entries in the given HashMap, we need to call
+         * the set() method.
+         *
+         * We set the actual inputs HashMap to have a key and value that comes
+         * straight from the input HashMap.
+         */
+        for (HashMap.Entry<String, Object> e : inputs.entrySet()) {
+            /*
+             * Call the set method.
+             *
+             * In case we ever do some refactoring on the internals for
+             * the InputDevice class, which is fairly likely, it's a better
+             * idea to set values through a setter.
+             */
+            set(
                     e.getKey(),
                     e.getValue()
             );
         }
+    }
+
+    /**
+     * Get an integer value from the HashMap of input streams.
+     *
+     * @param key the key to query.
+     * @return a value, based on the query key.
+     * @see InputDevice#inputs
+     * @see InputDevice#getDouble(String)
+     * @see InputDevice#getString(String)
+     * @see InputDevice#getObject(String)
+     * @see InputDevice#getBoolean(String)
+     */
+    public int getInt(String key) {
+        /*
+         * Cast the value to an integer.
+         */
+        return (int) inputs.get(key);
+    }
+
+    /**
+     * Get a double value from the HashMap of input streams.
+     *
+     * @param key the key to query.
+     * @return a value, based on the query key.
+     * @see InputDevice#inputs
+     * @see InputDevice#getInt(String)
+     * @see InputDevice#getString(String)
+     * @see InputDevice#getObject(String)
+     * @see InputDevice#getBoolean(String)
+     */
+    public double getDouble(String key) {
+        /*
+         * Cast the value to a double.
+         */
+        return (double) inputs.get(key);
+    }
+
+    /**
+     * Get a String value from the HashMap of input streams.
+     *
+     * @param key the key to query.
+     * @return a value, based on the query key.
+     * @see InputDevice#inputs
+     * @see InputDevice#getInt(String)
+     * @see InputDevice#getDouble(String)
+     * @see InputDevice#getObject(String)
+     * @see InputDevice#getBoolean(String)
+     */
+    public String getString(String key) {
+        /*
+         * Cast the value to a string.
+         */
+        return (String) inputs.get(key);
+    }
+
+    /**
+     * Get a boolean value from the HashMap of input streams.
+     *
+     * @param key the key to query.
+     * @return a value, based on the query key.
+     * @see InputDevice#inputs
+     * @see InputDevice#getInt(String)
+     * @see InputDevice#getDouble(String)
+     * @see InputDevice#getString(String)
+     * @see InputDevice#getObject(String)
+     */
+    public boolean getBoolean(String key) {
+        /*
+         * Cast the value to a boolean.
+         */
+        return (boolean) inputs.get(key);
+    }
+
+    /**
+     * Get an object value from the HashMap of input streams.
+     *
+     * <p>
+     * This method isn't particularly useful unless you cast the object that's
+     * stored in the {@code HashMap} into a more usable form of object. If
+     * you're attempting to get one of the following:
+     * <ul>
+     *     <li>String</li>
+     *     <li>Double</li>
+     *     <li>Boolean</li>
+     *     <li>Integer</li>
+     * </ul>
+     * ... methods for those casts already exist and are linked in the
+     * {@code @see} tags down below. If you're storing a custom object in the
+     * HashMap, you can cast it however you'd like.
+     * </p>
+     *
+     * @param key the key to query.
+     * @return a value, based on the query key.
+     * @see InputDevice#inputs
+     * @see InputDevice#getInt(String)
+     * @see InputDevice#getDouble(String)
+     * @see InputDevice#getString(String)
+     * @see InputDevice#getBoolean(String)
+     */
+    public Object getObject(String key) {
+        /*
+         * Don't cast the object - just return it as-is.
+         *
+         * Objects in the inputs HashMap exist normally as... well, objects.
+         */
+        return inputs.get(key);
+    }
+
+    /**
+     * Get the input HashMap, which can then be used to observe or modify
+     * the state.
+     *
+     * <p>
+     * It's advisable that you don't directly modify the {@link HashMap}, but
+     * rather, you modify it through some of the setter methods provided in the
+     * {@link InputDevice} class.
+     * </p>
+     *
+     * @return the input HashMap.
+     * @see InputDevice#inputs
+     * @see InputDevice#set(String, Object)
+     * @see InputDevice#setAll(HashMap)
+     * @see InputDevice#setMultiple(HashMap)
+     */
+    public HashMap<String, Object> getInputs() {
+        /*
+         * All that needs to be done here is returning the input HashMap.
+         *
+         * No modifications are needed - we give the caller the HashMap they
+         * want and get on with our day.
+         */
+        return inputs;
+    }
+
+    /**
+     * Get a cloned copy of the inputs HashMap. Unlike simply copying the
+     * HashMap, deep cloning it entirely separates the objects and values.
+     *
+     * <p>
+     * If you would prefer to access the {@link HashMap} directly, without the
+     * use of a clone as a sort of proxy, you can use the method named
+     * {@link InputDevice#getInputs()}, which will return the HashMap used
+     * directly inside of the {@link InputDevice} class.
+     * </p>
+     *
+     * @return a newly deep cloned version of the inputs HashMap.
+     * @see InputDevice#inputs
+     * @see InputDevice#getInputs()
+     */
+    public HashMap<String, Object> getClonedInputs() {
+        /*
+         * Create a new HashMap that will be used to store the cloned
+         * HashMap entries.
+         */
+        HashMap<String, Object> clone = new HashMap<>();
+
+        /*
+         * For each entry in the real (non-cloned, that is) input HashMap,
+         * we want to add a corresponding entry to the cloned HashMap.
+         */
+        for (HashMap.Entry<String, Object> e : inputs.entrySet()) {
+            clone.put(e.getKey(), e.getValue());
+        }
+
+        /*
+         * Return our now-complete cloned input HashMap.
+         */
+        return clone;
     }
 }

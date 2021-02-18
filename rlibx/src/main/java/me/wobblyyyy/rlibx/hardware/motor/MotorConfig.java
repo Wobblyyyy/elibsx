@@ -38,7 +38,7 @@ import me.wobblyyyy.rlibx.hardware.encoder.Encoder;
  * </p>
  *
  * @author Colin Robertson
- * @version 1.0.0
+ * @version 1.0.1
  * @since 0.1.0
  */
 public class MotorConfig {
@@ -134,14 +134,44 @@ public class MotorConfig {
     }
 
     /**
-     * Create a new MotorConfig.
+     * Create a new MotorConfig with a set of given options and parameters.
+     * Motors are intended to be highly tunable and customizable.
      *
-     * @param min        the motor's minimum value.
-     * @param max        the motor's maximum value.
-     * @param multiplier the motor's multiplier.
-     * @param deadzone   the motor's deadzone.
-     * @param isLazy     should the motor use lazy power?
-     * @param direction  the motor's direction.
+     * <p>
+     * To accommodate for the amount of customizable features that motors have,
+     * we need to use a special configuration class that makes passing values
+     * and parameters significantly easier. This class does exactly that.
+     * </p>
+     *
+     * @param min        the motor's minimum value. Any value below this value
+     *                   will be set to this value.
+     * @param max        the motor's maximum value. Any value above this value
+     *                   will be set to this value.
+     * @param multiplier the motor's multiplier. All inputted power values are
+     *                   multiplied by this number, prior to clipping for min
+     *                   and max constraints. Any power value that you input
+     *                   will be multiplied by this, regardless of whether or
+     *                   not the output power value exceeds any limits that
+     *                   you've set up.
+     * @param deadzone   the motor's deadzone. Values that are within this
+     *                   range (distance from zero, positive direction) are
+     *                   considered to be "dead," meaning the motor isn't even
+     *                   spinning enough to move forwards. Deadzones help make
+     *                   motors live longer by only setting power when the
+     *                   applied power impacts the motor.
+     * @param isLazy     should the motor use lazy power? Lazy power setting
+     *                   is a potentially performance-enhancing feature of the
+     *                   Motor class that only sets power when needed. By not
+     *                   setting power, and by not calling more methods than
+     *                   have to be called, CPU cycles are saved. Saving CPU
+     *                   cycles helps to improve runtime performance and loop
+     *                   times significantly.
+     * @param direction  the motor's direction. A motor in the positive
+     *                   direction functions entirely normally and exactly as
+     *                   you'd expect it to. However, a motor in the negative
+     *                   direction functions entirely inverted. Setting power
+     *                   of 1 to a FORWARDS motor and -1 to a BACKWARDS motor
+     *                   will set exactly the same power.
      */
     public MotorConfig(double min,
                        double max,
@@ -149,44 +179,6 @@ public class MotorConfig {
                        double deadzone,
                        boolean isLazy,
                        Direction direction) {
-        this(
-                min,
-                max,
-                multiplier,
-                deadzone,
-                isLazy,
-                direction,
-                RUN_MODE,
-                null
-        );
-    }
-
-    /**
-     * Create a new MotorConfig.
-     *
-     * @param min        the motor's minimum value.
-     * @param max        the motor's maximum value.
-     * @param multiplier the motor's multiplier.
-     * @param deadzone   the motor's deadzone.
-     * @param isLazy     should the motor use lazy power?
-     * @param direction  the motor's direction.
-     * @param runMode    the motor's mode of operation.
-     * @param encoder    the motor's tracking encoder.
-     */
-    public MotorConfig(double min,
-                       double max,
-                       double multiplier,
-                       double deadzone,
-                       boolean isLazy,
-                       Direction direction,
-                       MotorRunMode runMode,
-                       Encoder encoder) {
-        if (runMode == MotorRunMode.UNENCODED) {
-            this.encoder = null;
-        } else {
-            this.encoder = encoder;
-        }
-
         this.min = min;
         this.max = max;
         this.multiplier = multiplier;

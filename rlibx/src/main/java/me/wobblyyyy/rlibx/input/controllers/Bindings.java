@@ -212,6 +212,50 @@ public class Bindings {
     }
 
     /**
+     * Get the integer channel of a given input type.
+     *
+     * @param query the input type to get the channel for.
+     * @return the channel, based on the query input type.
+     * @see Xbox
+     */
+    public static int getString(Xbox query) {
+        return getChannel(query.getId());
+    }
+
+    /**
+     * Get the integer channel of a given input type.
+     *
+     * @param query the input type to get the channel for.
+     * @return the channel, based on the query input type.
+     * @see Playstation
+     */
+    public static int getString(Playstation query) {
+        return getChannel(query.getId());
+    }
+
+    /**
+     * Get the integer channel of a given input type.
+     *
+     * @param query the input type to get the channel for.
+     * @return the channel, based on the query input type.
+     * @see Keyboard
+     */
+    public static String getString(Keyboard query) {
+        return String.valueOf(getChannel(query.getId()));
+    }
+
+    /**
+     * Get the integer channel of a given input type.
+     *
+     * @param query the input type to get the channel for.
+     * @return the channel, based on the query input type.
+     * @see Core
+     */
+    public static String getString(Core query) {
+        return String.valueOf(query.getId());
+    }
+
+    /**
      * Native controller class.
      *
      * <p>
