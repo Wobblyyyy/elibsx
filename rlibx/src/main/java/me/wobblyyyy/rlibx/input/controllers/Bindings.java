@@ -48,124 +48,168 @@ package me.wobblyyyy.rlibx.input.controllers;
  * </p>
  *
  * @author Colin Robertson
+ * @version 1.0.0
  * @see Controller
  * @see ControllerEncoder
  * @see ControllerState
  * @since 0.1.0
- * @version 1.0.0
  */
 public class Bindings {
     /**
      * Channel for left stick x.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_LSX = 0;
 
     /**
      * Channel for left stick y.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_LSY = 1;
 
     /**
      * Channel for right stick x.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_RSX = 2;
 
     /**
      * Channel for right stick y.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_RSY = 3;
 
     /**
      * Channel for right trigger.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_RT = 4;
 
     /**
      * Channel for left trigger.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_LT = 5;
 
     /**
      * Channel for right bumper.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_RB = 6;
 
     /**
      * Channel for left bumper.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_LB = 7;
 
     /**
      * Channel for A button.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_A = 8;
 
     /**
      * Channel for B button.
-     *
+     * <p>
      * This value is NOT the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_B = 9;
 
     /**
      * Channel for X button.
-     *
+     * <p>
      * This value is NOT the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_X = 10;
 
     /**
      * Channel for Y button.
-     *
+     * <p>
      * This value is NOT the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_Y = 11;
 
     /**
      * Channel for D-pad up.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_U = 12;
 
     /**
      * Channel for D-pad down.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_D = 13;
 
     /**
      * Channel for D-pad left.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_L = 14;
 
     /**
      * Channel for D-pad right.
-     *
+     * <p>
      * This value is the same for Xbox and Playstation controllers.
      */
     public static final int CHANNEL_R = 15;
+
+    /**
+     * Get the integer channel of a given input type.
+     *
+     * @param query the input type to get the channel for.
+     * @return the channel, based on the query input type.
+     * @see Xbox
+     */
+    public static int getChannel(Xbox query) {
+        return getChannel(query.getId());
+    }
+
+    /**
+     * Get the integer channel of a given input type.
+     *
+     * @param query the input type to get the channel for.
+     * @return the channel, based on the query input type.
+     * @see Playstation
+     */
+    public static int getChannel(Playstation query) {
+        return getChannel(query.getId());
+    }
+
+    /**
+     * Get the integer channel of a given input type.
+     *
+     * @param query the input type to get the channel for.
+     * @return the channel, based on the query input type.
+     * @see Keyboard
+     */
+    public static int getChannel(Keyboard query) {
+        return getChannel(query.getId());
+    }
+
+    /**
+     * Get the integer channel of a given input type.
+     *
+     * @param query the input type to get the channel for.
+     * @return the channel, based on the query input type.
+     * @see Core
+     */
+    public static int getChannel(Core query) {
+        return query.getId();
+    }
 
     /**
      * Native controller class.
@@ -596,49 +640,5 @@ public class Bindings {
         Core getId() {
             return id;
         }
-    }
-
-    /**
-     * Get the integer channel of a given input type.
-     *
-     * @param query the input type to get the channel for.
-     * @return the channel, based on the query input type.
-     * @see Xbox
-     */
-    public static int getChannel(Xbox query) {
-        return getChannel(query.getId());
-    }
-
-    /**
-     * Get the integer channel of a given input type.
-     *
-     * @param query the input type to get the channel for.
-     * @return the channel, based on the query input type.
-     * @see Playstation
-     */
-    public static int getChannel(Playstation query) {
-        return getChannel(query.getId());
-    }
-
-    /**
-     * Get the integer channel of a given input type.
-     *
-     * @param query the input type to get the channel for.
-     * @return the channel, based on the query input type.
-     * @see Keyboard
-     */
-    public static int getChannel(Keyboard query) {
-        return getChannel(query.getId());
-    }
-
-    /**
-     * Get the integer channel of a given input type.
-     *
-     * @param query the input type to get the channel for.
-     * @return the channel, based on the query input type.
-     * @see Core
-     */
-    public static int getChannel(Core query) {
-        return query.getId();
     }
 }

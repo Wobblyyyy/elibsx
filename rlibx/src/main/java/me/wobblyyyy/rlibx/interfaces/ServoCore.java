@@ -30,8 +30,8 @@ package me.wobblyyyy.rlibx.interfaces;
  * Interface used for connecting between servos.
  *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public interface ServoCore extends ComponentCore {
     /**

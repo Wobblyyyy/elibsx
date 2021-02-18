@@ -35,21 +35,20 @@ import java.util.HashMap;
  * Class used in storing information about multiple different modes.
  *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public class MultiModeManager {
-    /**
-     * The robot's current mode of operation.
-     */
-    private Modes currentMode = Modes.ROBOT;
-
     /**
      * A map of all of the modes. This map maps a Modes element to a
      * ModeExecutor - meaning you'd have a separate ModeExecutor for
      * each mode, whether that mode be teleop, autonomous, etc.
      */
     private final HashMap<Modes, ModeExecutor> modeMap;
+    /**
+     * The robot's current mode of operation.
+     */
+    private Modes currentMode = Modes.ROBOT;
 
     /**
      * Create a new MultiModeManager without any parameters.

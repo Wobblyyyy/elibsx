@@ -32,8 +32,8 @@ import me.wobblyyyy.rlibx.util.ARGB;
  * Core used for interacting with an ARGB module.
  *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public interface ARGBCore extends ComponentCore {
     /**

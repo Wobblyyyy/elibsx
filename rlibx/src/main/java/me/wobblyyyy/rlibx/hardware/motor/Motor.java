@@ -55,92 +55,80 @@ import me.wobblyyyy.rlibx.interfaces.MotorCore;
  * </p>
  *
  * @author Colin Robertson
+ * @version 1.0.0
  * @see MotorConfig
  * @since 0.1.0
- * @version 1.0.0
  */
 public class Motor implements Component {
+    /**
+     * The motor's motor core - you know, the thing that's actually used in
+     * making motors work and all that.
+     */
+    private final MotorCore motor;
     /**
      * The motor's configuration.
      *
      * @see MotorConfig
      */
     private MotorConfig config;
-
     /**
      * Minimum power value.
      *
      * @see MotorConfig#getMin()
      */
     private double min;
-
     /**
      * Maximum power value.
      *
      * @see MotorConfig#getMax()
      */
     private double max;
-
     /**
      * Power multiplier.
      *
      * @see MotorConfig#getMultiplier()
      */
     private double multiplier;
-
     /**
      * The motor's power deadzone.
      *
      * @see MotorConfig#getDeadzone()
      */
     private double deadzone;
-
     /**
      * Should the motor use lazy power setting?
      *
      * @see MotorConfig#isLazy()
      */
     private boolean isLazy;
-
     /**
      * The motor's direction.
      *
      * @see MotorConfig#getDirection()
      */
     private Direction direction;
-
     /**
      * Is the motor user-controlled?
      */
     private boolean isUserControlled;
-
     /**
      * The motor's power.
      */
     private double power = 0;
-
     /**
      * The last timestamp of when power was set to the motor.
      */
     private double lastTime = System.currentTimeMillis();
-
     /**
      * A comparator, used for comparing numbers while checking whether or
      * not power should be set to a motor operating in lazy mode.
      */
     private Comparator lazyPowerComparator;
-
     /**
      * A comparator, used for comparing numbers while checking the elapsed
      * time since power was last set to a motor.
      */
     private Comparator lazyTimeComparator;
-
-    /**
-     * The motor's motor core - you know, the thing that's actually used in
-     * making motors work and all that.
-     */
-    private final MotorCore motor;
 
     /**
      * Create a new Motor class.
@@ -564,10 +552,10 @@ public class Motor implements Component {
      * <p>
      * If the motor is going forwards, we know the stored power value is
      * positive.
-     *
+     * <p>
      * If the motor is going backwards, we need to invert the stored power
      * value so that it's correct.
-     *
+     * <p>
      * Apply a direction to the power before returning that power value.
      * </p>
      *

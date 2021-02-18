@@ -36,8 +36,8 @@ package me.wobblyyyy.rlibx.operation;
  * </p>
  *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public class MultiMode {
     private MultiModeManager manager;

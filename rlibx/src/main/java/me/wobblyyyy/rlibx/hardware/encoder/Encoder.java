@@ -39,39 +39,34 @@ import me.wobblyyyy.rlibx.interfaces.EncoderCore;
  * </p>
  *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public class Encoder implements Component {
-    /**
-     * Is the encoder inverted?
-     */
-    private boolean isInverted;
-
     /**
      * Should the encoder zero itself on start-up?
      */
     private final boolean shouldZero;
-
-    /**
-     * The encoder's count offset.
-     */
-    private int offset;
-
-    /**
-     * The encoder's internally-used zero offset.
-     */
-    private int zeroOffset;
-
-    /**
-     * The encoder's counts per rotation.
-     */
-    private double cpr;
-
     /**
      * The internally-used encoder core.
      */
     private final EncoderCore encoder;
+    /**
+     * Is the encoder inverted?
+     */
+    private boolean isInverted;
+    /**
+     * The encoder's count offset.
+     */
+    private int offset;
+    /**
+     * The encoder's internally-used zero offset.
+     */
+    private int zeroOffset;
+    /**
+     * The encoder's counts per rotation.
+     */
+    private final double cpr;
 
     /**
      * Create a new encoder.
@@ -129,21 +124,21 @@ public class Encoder implements Component {
     }
 
     /**
-     * Set the encoder's offset.
-     *
-     * @param offset the encoder's offset.
-     */
-    public void setOffset(int offset) {
-        this.offset = offset;
-    }
-
-    /**
      * Get the encoder's offset.
      *
      * @return the encoder's offset.
      */
     public int getOffset() {
         return offset;
+    }
+
+    /**
+     * Set the encoder's offset.
+     *
+     * @param offset the encoder's offset.
+     */
+    public void setOffset(int offset) {
+        this.offset = offset;
     }
 
     /**

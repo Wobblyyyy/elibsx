@@ -47,8 +47,8 @@ import java.util.HashMap;
  * </p>
  *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public class SubsystemConfiguration extends Configuration {
     /**
@@ -67,7 +67,7 @@ public class SubsystemConfiguration extends Configuration {
      * @param values the values that should be set.
      * @see Configuration
      * @see Configuration#getDouble(String)
-     * @see Configuration#getInt(String) 
+     * @see Configuration#getInt(String)
      */
     public SubsystemConfiguration(HashMap<String, Double> values) {
         super(values);

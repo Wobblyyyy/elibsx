@@ -38,8 +38,8 @@ import me.wobblyyyy.rlibx.hardware.encoder.Encoder;
  * </p>
  *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public class MotorConfig {
     /**
@@ -123,14 +123,14 @@ public class MotorConfig {
      * @param direction the motor's direction.
      */
     public MotorConfig(Direction direction) {
-       this(
-               MIN,
-               MAX,
-               MULTIPLIER,
-               DEADZONE,
-               IS_LAZY,
-               direction
-       );
+        this(
+                MIN,
+                MAX,
+                MULTIPLIER,
+                DEADZONE,
+                IS_LAZY,
+                direction
+        );
     }
 
     /**
@@ -259,12 +259,30 @@ public class MotorConfig {
     }
 
     /**
+     * Set the motor's deadzone.
+     *
+     * @param deadzone the motor's deadzone.
+     */
+    public void setDeadzone(double deadzone) {
+        this.deadzone = deadzone;
+    }
+
+    /**
      * Get the motor's run mode.
      *
      * @return the motor's run mode.
      */
     public MotorRunMode getRunMode() {
         return runMode;
+    }
+
+    /**
+     * Set the motor's run mode.
+     *
+     * @param runMode the motor's run mode.
+     */
+    public void setRunMode(MotorRunMode runMode) {
+        this.runMode = runMode;
     }
 
     /**
@@ -277,12 +295,12 @@ public class MotorConfig {
     }
 
     /**
-     * Set the motor's deadzone.
+     * Set the motor's encoder.
      *
-     * @param deadzone the motor's deadzone.
+     * @param encoder the motor's encoder.
      */
-    public void setDeadzone(double deadzone) {
-        this.deadzone = deadzone;
+    public void setEncoder(Encoder encoder) {
+        this.encoder = encoder;
     }
 
     /**
@@ -319,23 +337,5 @@ public class MotorConfig {
      */
     public void setDirection(Direction direction) {
         this.direction = direction;
-    }
-
-    /**
-     * Set the motor's run mode.
-     *
-     * @param runMode the motor's run mode.
-     */
-    public void setRunMode(MotorRunMode runMode) {
-        this.runMode = runMode;
-    }
-
-    /**
-     * Set the motor's encoder.
-     *
-     * @param encoder the motor's encoder.
-     */
-    public void setEncoder(Encoder encoder) {
-        this.encoder = encoder;
     }
 }

@@ -38,21 +38,20 @@ import me.wobblyyyy.rlibx.interfaces.ControllerCore;
  * </p>
  *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public class Controller {
-    /**
-     * The controller's current state - updated whenever information about
-     * the encoder's state is polled.
-     */
-    private ControllerState state;
-
     /**
      * The controller's central controller - y'know, like, the thing that
      * actually tells us the input values.
      */
     private final ControllerCore controller;
+    /**
+     * The controller's current state - updated whenever information about
+     * the encoder's state is polled.
+     */
+    private ControllerState state;
 
     /**
      * Create a new controller, using a controller core.

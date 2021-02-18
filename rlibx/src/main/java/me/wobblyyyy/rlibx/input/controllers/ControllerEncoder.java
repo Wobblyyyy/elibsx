@@ -40,10 +40,10 @@ import java.util.ArrayList;
  * </p>
  *
  * @author Colin Robertson
+ * @version 1.0.0
  * @see ControllerState
  * @see me.wobblyyyy.rlibx.input.InputDevice
  * @since 0.1.0
- * @version 1.0.0
  */
 public class ControllerEncoder {
     /**

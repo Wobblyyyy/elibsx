@@ -32,15 +32,29 @@ import java.util.Arrays;
 /**
  * Manager-type class used to regulate all of the subsystems.
  *
+ * <p>
+ * Subsystem managers provide a significant advantage over a lack of subsystem
+ * structure because they allow code to become significantly more organized.
+ * It's quite a bit more challenging and confusing to handle the initialization
+ * and management of 20 subsystems compared to a single manager that does
+ * everything for you.
+ * </p>
+ *
+ * <p>
+ * Subsystem managers do not provide any additional utility or functionality
+ * over an unstructured layout. There's not any sort of strong need to use
+ * a manager, but the option is here in case you'd like to.
+ * </p>
+ *
  * @author Colin Robertson
- * @since 0.1.0
  * @version 1.0.0
+ * @since 0.1.0
  */
 public class SubsystemManager {
     /**
      * A list of all of the Subsystem elements that have been registered.
      */
-    private ArrayList<Subsystem> subsystems = new ArrayList<>();
+    private final ArrayList<Subsystem> subsystems = new ArrayList<>();
 
     /**
      * Create a new SubsystemManager.
