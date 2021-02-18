@@ -35,7 +35,7 @@ import java.util.HashMap;
  * Class used in storing information about multiple different modes.
  *
  * @author Colin Robertson
- * @version 1.0.0
+ * @version 1.1.0
  * @since 0.1.0
  */
 public class MultiModeManager {
@@ -58,6 +58,8 @@ public class MultiModeManager {
      * any usable modes. You can accomplish this rather easily, actually.
      * The {@link MultiModeManager#addMode(Modes, ModeExecutor)} should help.
      * </p>
+     *
+     * @see MultiModeManager#MultiModeManager(HashMap)
      */
     public MultiModeManager() {
         this.modeMap = new HashMap<>();
@@ -82,6 +84,7 @@ public class MultiModeManager {
      * Force the activation of a given mode.
      *
      * @param mode the mode to activate.
+     * @see MultiModeManager#deactivateMode(Modes)
      */
     public void activateMode(Modes mode) {
         getMode(mode).start();
@@ -96,6 +99,7 @@ public class MultiModeManager {
      * </p>
      *
      * @param mode the mode to de-activate.
+     * @see MultiModeManager#activateMode(Modes)
      */
     public void deactivateMode(Modes mode) {
         /*
@@ -134,6 +138,8 @@ public class MultiModeManager {
      * </p>
      *
      * @param mode the mode to switch to.
+     * @see MultiModeManager#activateMode(Modes)
+     * @see MultiModeManager#deactivateMode(Modes)
      */
     public void switchModes(Modes mode) {
         /*
@@ -195,9 +201,22 @@ public class MultiModeManager {
      *
      * @param mode the enum to query for.
      * @return the mode given for that specific enum.
+     * @see MultiModeManager#getModes()
      */
     public ModeExecutor getMode(Modes mode) {
         return modeMap.get(mode);
+    }
+
+    /**
+     * Get the entire {@code HashMap} of modes and their respective execution
+     * methods. This returns the {@code HashMap}, not a single individual
+     * mode or a pair of modes or anything.
+     *
+     * @return the entire {@code HashMap} of modes and their executors.
+     * @see MultiModeManager#getMode(Modes)
+     */
+    public HashMap<Modes, ModeExecutor> getModes() {
+        return modeMap;
     }
 
     /**
@@ -209,5 +228,20 @@ public class MultiModeManager {
     public void addMode(Modes mode,
                         ModeExecutor executor) {
         modeMap.put(mode, executor);
+    }
+
+    /**
+     * Check to see if the given mode is currently active.
+     *
+     * <p>
+     * The robot is technically always in robot mode, so trying to see if the
+     * robot is in robot mode will always return true.
+     * </p>
+     *
+     * @param mode a mode that will be checked for activity.
+     * @return whether or not the given mode is active.
+     */
+    public boolean isModeActive(Modes mode) {
+        return getMode(mode).isActive();
     }
 }

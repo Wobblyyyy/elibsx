@@ -57,10 +57,15 @@ package me.wobblyyyy.rlibx.manager;
  * </p>
  *
  * @author Colin Robertson
- * @version 1.0.0
+ * @version 1.1.0
  * @since 0.1.0
  */
 public class Mode {
+    /**
+     * Is the mode currently active?
+     */
+    private boolean isActive = false;
+
     /**
      * The mode's executable.
      */
@@ -146,6 +151,11 @@ public class Mode {
          * Start the execution thread.
          */
         executionThread.start();
+
+        /*
+         * Set the active flag to true.
+         */
+        isActive = true;
     }
 
     /**
@@ -171,5 +181,31 @@ public class Mode {
          * the Thread#stop method, as that method... kinda ain't very good.
          */
         executionThread.stop();
+
+        /*
+         * Set the isActive flag to off.
+         */
+        isActive = false;
+    }
+
+    /**
+     * Check whether or not the mode is currently active.
+     *
+     * <p>
+     * Modes are not active until they're made active by calling the
+     * {@link Mode#start()} method.
+     * </p>
+     *
+     * <p>
+     * A mode's activity is modified by the {@link Mode#start()} and the
+     * {@link Mode#stop()} methods. The mode will be defined as active
+     * whenever the start method is called. The mode will then be defined as
+     * inactive when the stop method is called.
+     * </p>
+     *
+     * @return whether or not the mode is currently active.
+     */
+    public boolean isActive() {
+        return isActive;
     }
 }
