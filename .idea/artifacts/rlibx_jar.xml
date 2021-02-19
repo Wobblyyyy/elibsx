@@ -3,11 +3,11 @@
     <output-path>$PROJECT_DIR$/out/artifacts/</output-path>
     <root id="archive" name="rlibx.jar">
       <element id="module-output" name="rlibx" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/icu4j-68.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/js-21.0.0.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/regex-21.0.0.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/graal-sdk-21.0.0.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/truffle-api-21.0.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/icu4j.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/graaljs.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/tregex.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/graal-sdk.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/truffle-api.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/txw2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/xsom.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/rngom.jar" path-in-jar="/" />

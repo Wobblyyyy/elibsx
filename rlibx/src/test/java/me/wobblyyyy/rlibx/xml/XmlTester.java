@@ -26,6 +26,7 @@
 
 package me.wobblyyyy.rlibx.xml;
 
+import me.wobblyyyy.rlibx.xml.config.Attribute;
 import me.wobblyyyy.rlibx.xml.config.RobotConfig;
 import me.wobblyyyy.rlibx.xml.config.code.CodeList;
 import me.wobblyyyy.rlibx.xml.config.code.Source;
@@ -33,7 +34,7 @@ import me.wobblyyyy.rlibx.xml.config.components.Component;
 import me.wobblyyyy.rlibx.xml.config.components.ComponentList;
 import me.wobblyyyy.rlibx.xml.config.subsystems.Subsystem;
 import me.wobblyyyy.rlibx.xml.config.subsystems.SubsystemList;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -60,9 +61,11 @@ public class XmlTester {
         String subsystemName = ("Subsystem");
         String sourceName = "java";
         String sourcePath = "java places or something";
+        Attribute motorId1 = new Attribute("id", "1");
+        Attribute motorId2 = new Attribute("id", "2");
 
-        Component motor1 = new Component(motorType, motorName1);
-        Component motor2 = new Component(motorType, motorName2);
+        Component motor1 = new Component(motorType, motorName1, motorId1);
+        Component motor2 = new Component(motorType, motorName2, motorId2);
         Subsystem subsystem = new Subsystem(
                 subsystemName,
                 motorName1,

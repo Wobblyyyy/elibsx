@@ -26,8 +26,13 @@
 
 package me.wobblyyyy.rlibx.xml.config;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
+
 public class Attribute {
+    @XmlAttribute
     private String name;
+    @XmlAttribute
     private String value;
 
     public Attribute(String name,
@@ -36,6 +41,7 @@ public class Attribute {
         setValue(value);
     }
 
+    @XmlTransient
     public String getName() {
         return name;
     }
@@ -44,6 +50,7 @@ public class Attribute {
         this.name = name;
     }
 
+    @XmlTransient
     public String getValue() {
         return value;
     }
