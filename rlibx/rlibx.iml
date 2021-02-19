@@ -37,6 +37,16 @@
         <jarDirectory url="file://$MODULE_DIR$/../libs_jaxb" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../libs_graal" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../libs_graal" recursive="false" />
+      </library>
+    </orderEntry>
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>

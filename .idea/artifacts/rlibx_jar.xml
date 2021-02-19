@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="rlibx:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/</output-path>
+    <root id="archive" name="rlibx.jar">
+      <element id="module-output" name="rlibx" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/icu4j-68.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/js-21.0.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/regex-21.0.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/graal-sdk-21.0.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_graal/truffle-api-21.0.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/txw2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/xsom.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/rngom.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/stax-ex.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/jaxb-api.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/jaxb-jxc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/jaxb-xjc.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/codemodel.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/dtd-parser.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/FastInfoset.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/jaxb-runtime.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/relaxng-datatype.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/istack-commons-tools.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/javax.activation-api.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs_jaxb/istack-commons-runtime.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/intra_utils.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/reflections-0.9.12.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
