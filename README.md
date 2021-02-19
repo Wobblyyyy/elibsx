@@ -18,7 +18,7 @@ beautiful, sexy, and "eeeee-lib" robotics library, elibsx!
   allowing for on-the-fly pathfinding, motion prediction, profiling, and
   planning.
 - Entirely modular and extensible libraries - ignore what you don't want. 
-- An easy way to organize your code more clearly - by subsystem, mode of operation,
+- An easy way to organize your codeList more clearly - by subsystem, mode of operation,
   autonomous routine, tele-op routine, configurations, controller bindings,
   and much, much, much, more.
 - Easy-to-use tools and templates, drag-and-drop solutions, and a significantly
@@ -54,7 +54,7 @@ person. Regardless, here ya go.
   contains a copy of the rlibx JAR with FTC utilities thrown on top.
 - __rlibx__
   A standardized robotics library designed for allowing development between both FTC and
-  FRC environments. That's right - you can use the same code you used for an FTC robot for
+  FRC environments. That's right - you can use the same codeList you used for an FTC robot for
   an FRC robot, of course with a couple of (very minor) changes to account for differences
   in hardware. 
   

@@ -49,7 +49,7 @@ import me.wobblyyyy.rlibx.interfaces.MotorCore;
  *
  * <p>
  * The original motor class had significantly more parameters - however, in
- * an effort to simplify the codebase of any of my robotics code, the new (and
+ * an effort to simplify the codebase of any of my robotics codeList, the new (and
  * current) version of this class is significantly slimmer, but just nearly
  * just as powerful.
  * </p>
@@ -291,11 +291,11 @@ public class Motor implements Component {
      * </p>
      *
      * <p>
-     * <code>
+     * <codeList>
      * if (too much time has elapsed since power was last set) AND
      * if (the current and target power values are far apart)
      *   return true
-     * </code>
+     * </codeList>
      * </p>
      *
      * @param power the new suggested power value.
