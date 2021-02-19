@@ -47,5 +47,6 @@ public class RLibGuiTest {
         pi.exec("from creator.composer import *");
         pi.exec("from creator.composer_test import *");
         pi.exec("print(xml_string)");
+        pi.exec("import gui");
     }
 }
