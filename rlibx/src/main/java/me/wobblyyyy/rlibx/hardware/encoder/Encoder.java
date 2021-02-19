@@ -26,7 +26,7 @@
 
 package me.wobblyyyy.rlibx.hardware.encoder;
 
-import me.wobblyyyy.rlibx.hardware.Component;
+import me.wobblyyyy.rlibx.interfaces.Component;
 import me.wobblyyyy.rlibx.interfaces.EncoderCore;
 
 /**

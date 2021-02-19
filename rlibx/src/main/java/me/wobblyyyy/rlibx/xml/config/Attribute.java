@@ -27,28 +27,28 @@
 package me.wobblyyyy.rlibx.xml.config;
 
 public class Attribute {
-    private Name name;
-    private Value value;
+    private String name;
+    private String value;
 
-    public Attribute(Name name,
-                     Value value) {
+    public Attribute(String name,
+                     String value) {
         setName(name);
         setValue(value);
     }
 
-    public Name getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Name name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Value getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(Value value) {
+    public void setValue(String value) {
         this.value = value;
     }
 }

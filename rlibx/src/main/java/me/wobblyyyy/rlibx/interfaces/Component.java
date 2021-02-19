@@ -24,35 +24,18 @@
  *
  */
 
-package me.wobblyyyy.rlibx.xml.io;
-
-import me.wobblyyyy.rlibx.error.ReaderWriterException;
-
-import java.io.*;
+package me.wobblyyyy.rlibx.interfaces;
 
 /**
- * Read XML code from a file.
+ * Interface shared by all physical components on the robot.
  *
  * @author Colin Robertson
+ * @version 1.0.0
+ * @since 0.1.0
  */
-public class XmlReader {
-    private final File file;
-
-    private XmlReader(File file) {
-        this.file = file;
-    }
-
-    public static XmlReader newInstance(File file) {
-        return new XmlReader(file);
-    }
-
-    public FileInputStream getInputStream() throws ReaderWriterException {
-        try {
-            return new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
-            throw new ReaderWriterException(XmlRw.READER_ERROR);
-        }
-    }
+public interface Component {
+    /**
+     * Initialize the component.
+     */
+    void init();
 }

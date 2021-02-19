@@ -26,10 +26,33 @@
 
 package me.wobblyyyy.rlibx.xml.io;
 
+import me.wobblyyyy.rlibx.error.ReaderWriterException;
+
+import java.io.*;
+
 /**
  * Write XML code to a file.
  *
  * @author Colin Robertson
  */
 public class XmlWriter {
+    private final File file;
+
+    private XmlWriter(File file) {
+        this.file = file;
+    }
+
+    public static XmlWriter newInstance(File file) {
+        return new XmlWriter(file);
+    }
+
+    public FileOutputStream getOutputStream() throws ReaderWriterException {
+        try {
+            return new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+            throw new ReaderWriterException(XmlRw.READER_ERROR);
+        }
+    }
 }

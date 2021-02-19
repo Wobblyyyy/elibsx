@@ -24,35 +24,17 @@
  *
  */
 
-package me.wobblyyyy.rlibx.xml.io;
-
-import me.wobblyyyy.rlibx.error.ReaderWriterException;
-
-import java.io.*;
+package me.wobblyyyy.rlibx.error;
 
 /**
- * Read XML code from a file.
+ * Exception to be thrown whenever an XML configuration can't be loaded because
+ * one or more attributes are missing.
  *
  * @author Colin Robertson
+ * @since 0.2.0
  */
-public class XmlReader {
-    private final File file;
-
-    private XmlReader(File file) {
-        this.file = file;
-    }
-
-    public static XmlReader newInstance(File file) {
-        return new XmlReader(file);
-    }
-
-    public FileInputStream getInputStream() throws ReaderWriterException {
-        try {
-            return new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
-            throw new ReaderWriterException(XmlRw.READER_ERROR);
-        }
+public class MissingAttributeException extends Exception {
+    public MissingAttributeException(String exception) {
+        super(exception);
     }
 }

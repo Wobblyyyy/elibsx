@@ -24,35 +24,22 @@
  *
  */
 
-package me.wobblyyyy.rlibx.xml.io;
-
-import me.wobblyyyy.rlibx.error.ReaderWriterException;
-
-import java.io.*;
+package me.wobblyyyy.rlibx.error;
 
 /**
- * Read XML code from a file.
+ * Exception to be thrown whenever a component's execution class is not
+ * found.
  *
  * @author Colin Robertson
+ * @since 0.2.0
  */
-public class XmlReader {
-    private final File file;
-
-    private XmlReader(File file) {
-        this.file = file;
-    }
-
-    public static XmlReader newInstance(File file) {
-        return new XmlReader(file);
-    }
-
-    public FileInputStream getInputStream() throws ReaderWriterException {
-        try {
-            return new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
-            throw new ReaderWriterException(XmlRw.READER_ERROR);
-        }
+public class NoComponentFoundException extends Exception {
+    /**
+     * Create a new NoComponentFound exception.
+     *
+     * @param exception the exception's message.
+     */
+    public NoComponentFoundException(String exception) {
+        super(exception);
     }
 }

@@ -24,35 +24,20 @@
  *
  */
 
-package me.wobblyyyy.rlibx.xml.io;
+package me.wobblyyyy.rlibx.xml;
 
-import me.wobblyyyy.rlibx.error.ReaderWriterException;
+import me.wobblyyyy.rlibx.xml.config.components.Component;
 
-import java.io.*;
+public abstract class XmlComponent {
+    private final Component component;
 
-/**
- * Read XML code from a file.
- *
- * @author Colin Robertson
- */
-public class XmlReader {
-    private final File file;
-
-    private XmlReader(File file) {
-        this.file = file;
+    public XmlComponent(Component component) {
+        this.component = component;
     }
 
-    public static XmlReader newInstance(File file) {
-        return new XmlReader(file);
-    }
+    public abstract XmlRequiredAttributes getRequiredAttributes();
 
-    public FileInputStream getInputStream() throws ReaderWriterException {
-        try {
-            return new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
-            throw new ReaderWriterException(XmlRw.READER_ERROR);
-        }
+    public Component getComponent() {
+        return component;
     }
 }

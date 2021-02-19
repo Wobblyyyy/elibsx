@@ -27,7 +27,7 @@
 package me.wobblyyyy.rlibx.subsystem;
 
 import me.wobblyyyy.rlibx.configuration.SubsystemConfiguration;
-import me.wobblyyyy.rlibx.hardware.Component;
+import me.wobblyyyy.rlibx.interfaces.Component;
 
 import java.util.ArrayList;
 

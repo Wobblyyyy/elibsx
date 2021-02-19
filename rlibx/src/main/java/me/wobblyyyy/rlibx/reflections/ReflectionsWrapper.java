@@ -24,35 +24,21 @@
  *
  */
 
-package me.wobblyyyy.rlibx.xml.io;
+package me.wobblyyyy.rlibx.reflections;
 
-import me.wobblyyyy.rlibx.error.ReaderWriterException;
-
-import java.io.*;
+import org.reflections.Reflections;
 
 /**
- * Read XML code from a file.
+ * Wrapper class for the Reflections library.
  *
  * @author Colin Robertson
+ * @since 0.2.0
  */
-public class XmlReader {
-    private final File file;
+public class ReflectionsWrapper {
+    private static Reflections reflections;
 
-    private XmlReader(File file) {
-        this.file = file;
-    }
-
-    public static XmlReader newInstance(File file) {
-        return new XmlReader(file);
-    }
-
-    public FileInputStream getInputStream() throws ReaderWriterException {
-        try {
-            return new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
-            throw new ReaderWriterException(XmlRw.READER_ERROR);
-        }
+    public static Reflections getReflections() {
+        if (reflections == null) reflections = new Reflections();
+        return reflections;
     }
 }
