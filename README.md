@@ -1,6 +1,7 @@
 ![elibsx Logo](logo.png)
 
 ![Issues](https://img.shields.io/github/issues/Wobblyyyy/elibsx)
+![Top Language](https://img.shields.io/github/languages/top/wobblyyyy/elibsx)
 ![Forks](https://img.shields.io/github/forks/Wobblyyyy/elibsx)
 ![Stars](https://img.shields.io/github/stars/Wobblyyyy/elibsx)
 ![GPL-3.0](https://img.shields.io/github/license/Wobblyyyy/elibsx)
