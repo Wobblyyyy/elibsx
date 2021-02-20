@@ -39,6 +39,11 @@ package me.wobblyyyy.rlibx.gui;
  */
 public class RLibGui {
     public static void main(String[] args) {
+        // Commands to be run whenever a new user attempts to run the
+        // rlibgui. Is there a way we can check to see if the user has the
+        // required module, and if they don't, install it for them?
+        // pip install numpy
+        // pip install matplotlib
         System.out.println("Yay!");
 
         try {
