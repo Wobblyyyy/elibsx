@@ -27,7 +27,6 @@
 package me.wobblyyyy.rlibx.gui;
 
 import org.junit.jupiter.api.Test;
-import org.python.util.PythonInterpreter;
 
 /**
  * The main class for operating with the rlibx gui.
@@ -43,10 +42,6 @@ import org.python.util.PythonInterpreter;
 public class RLibGuiTest {
     @Test
     public void testLaunchUi() {
-        PythonInterpreter pi = new PythonInterpreter();
-        pi.exec("from creator.composer import *");
-        pi.exec("from creator.composer_test import *");
-        pi.exec("print(xml_string)");
-        pi.exec("import gui");
+
     }
 }

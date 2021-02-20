@@ -25,5 +25,5 @@ hs_err_pid*
 .idea/uiDesigner.xml
 
 # exclude venv
-venv
-/venv/
+#venv
+#/venv/

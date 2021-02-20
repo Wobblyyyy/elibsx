@@ -38,5 +38,13 @@ package me.wobblyyyy.rlibx.gui;
  * @since 0.2.0
  */
 public class RLibGui {
+    public static void main(String[] args) {
+        System.out.println("Yay!");
 
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
