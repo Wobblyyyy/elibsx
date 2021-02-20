@@ -47,7 +47,7 @@ public class XmlRequiredAttributes {
         return requiredAttributes;
     }
 
-    private ArrayList<String> getAttributeNames(
+    private static ArrayList<String> getAttributeNames(
             ArrayList<Attribute> attributes) {
         ArrayList<String> strings = new ArrayList<>();
 
@@ -58,7 +58,7 @@ public class XmlRequiredAttributes {
         return strings;
     }
 
-    private ArrayList<String> getAttributeNames(
+    private static ArrayList<String> getAttributeNames(
             HashMap<String, DependLevel> attributes) {
         ArrayList<String> strings = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class XmlRequiredAttributes {
         return strings;
     }
 
-    private boolean areAllStringFromSecondArrayPresent(
+    private static boolean areAllStringFromSecondArrayPresent(
             ArrayList<String> firstArrayList,
             ArrayList<String> secondArrayList) {
         for (String a : secondArrayList) {
@@ -80,7 +80,7 @@ public class XmlRequiredAttributes {
         return true;
     }
 
-    private ArrayList<String> getStringsFromOnlySecondArray(
+    private static ArrayList<String> getStringsFromOnlySecondArray(
             ArrayList<String> firstArrayList,
             ArrayList<String> secondArrayList) {
         for (String a : firstArrayList) {
@@ -110,6 +110,12 @@ public class XmlRequiredAttributes {
                 present
         );
 
+        /*
+         * If there's too many attributes, as in attributes that shouldn't be
+         * there, we return the list of extra attributes.
+         *
+         * This should be refactored, this is very bad code.
+         */
         if (extra.size() > 0) {
             return extra;
         }
