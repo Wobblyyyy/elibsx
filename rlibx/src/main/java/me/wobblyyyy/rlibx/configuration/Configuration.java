@@ -60,7 +60,7 @@ public class Configuration {
      * @see Configuration#add(String, double)
      * @see Configuration#Configuration(HashMap)
      */
-    private final HashMap<String, Double> values;
+    private final HashMap<String, Object> values;
 
     /**
      * Create a new configuration with a set of values.
@@ -96,7 +96,7 @@ public class Configuration {
      * @param values the values that should be set.
      * @see Configuration#add(String, double)
      */
-    public Configuration(HashMap<String, Double> values) {
+    public Configuration(HashMap<String, Object> values) {
         /*
          * Set the local values HashMap to the inputted HashMap.
          *
@@ -133,21 +133,14 @@ public class Configuration {
     /**
      * Get a double value based on a given key.
      *
-     * <p>
-     * Numbers are stored as doubles by default, meaning there's no need
-     * to run any conversions or casts in order to extract a usable value.
-     * </p>
-     *
      * @param key the key to search for.
      * @return a found double value.
      * @see Configuration#getInt(String)
+     * @see Configuration#getString(String)
+     * @see Configuration#get(String)
      */
     public double getDouble(String key) {
-        /*
-         * The HashMap is already in Double form - we can simply fetch the
-         * value and return it.
-         */
-        return values.get(key);
+        return (double) get(key);
     }
 
     /**
@@ -170,6 +163,8 @@ public class Configuration {
      * @return an integer, based on the results of searching for the key.
      * @see Configuration#getDouble(String)
      * @see Configuration#isAnInteger(double)
+     * @see Configuration#getString(String)
+     * @see Configuration#get(String)
      */
     public int getInt(String key) {
         /*
@@ -232,6 +227,47 @@ public class Configuration {
              */
             return -1;
         }
+    }
+
+    /**
+     * Get a {@code String} value from the configuration based on a key.
+     *
+     * <p>
+     * This method attempts to parse whatever stored object corresponds with
+     * the inputted key into a string. It may throw exceptions if it fails.
+     * Exceptions obviously aren't good.
+     * </p>
+     *
+     * @param key the key to query for.
+     * @return the returned value.
+     * @see Configuration#getInt(String)
+     * @see Configuration#getDouble(String)
+     * @see Configuration#get(String)
+     */
+    public String getString(String key) {
+        return (String) get(key);
+    }
+
+    /**
+     * Get an {@code Object} from the {@link Configuration#values}
+     * {@code HashMap}. This object can (and should) be casted into other
+     * objects.
+     *
+     * <p>
+     * If you only plan on getting a primitive type, such as a {@code double},
+     * {@code int}, {@code boolean}, or even {@code String} (not a primitive,
+     * I know, I know), you can use one of the specifically-designed methods
+     * to do exactly that. Take a lot at the "see also" section of this JavaDoc.
+     * </p>
+     *
+     * @param key the key to search the {@code HashMap} for.
+     * @return the object that corresponds to the given key.
+     * @see Configuration#getInt(String)
+     * @see Configuration#getDouble(String)
+     * @see Configuration#getString(String)
+     */
+    public Object get(String key) {
+        return values.get(key);
     }
 
     /**

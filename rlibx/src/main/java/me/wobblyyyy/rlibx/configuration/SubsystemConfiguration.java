@@ -67,7 +67,7 @@ public class SubsystemConfiguration extends Configuration {
      * @see Configuration#Configuration(HashMap)
      * @see Configuration#add(String, double) 
      */
-    public SubsystemConfiguration(HashMap<String, Double> values) {
+    public SubsystemConfiguration(HashMap<String, Object> values) {
         super(values);
     }
 }

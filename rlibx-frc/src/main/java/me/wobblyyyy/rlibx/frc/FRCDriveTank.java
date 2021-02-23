@@ -32,9 +32,32 @@ import me.wobblyyyy.rlibx.drive.TranslationTank;
 import me.wobblyyyy.rlibx.hardware.motor.Motor;
 import me.wobblyyyy.rlibx.subsystem.Subsystem;
 
+/**
+ * A simple tank drive.
+ *
+ * @author Colin Robertson
+ * @since 0.2.0
+ */
 public class FRCDriveTank extends Subsystem {
+    /**
+     * The tank drive's drivetrain.
+     *
+     * <p>
+     * This drivetrain, of course, is used in actually driving the robot. Who
+     * could have possibly seen that coming? It's insane, isn't it?
+     * </p>
+     */
     private final DrivetrainTank drivetrain;
 
+    /**
+     * Create a new FRCDriveTank instance.
+     *
+     * @param configuration the subsystem's configuration.
+     * @param fr            front-right motor.
+     * @param fl            front-left motor.
+     * @param br            back-right motor.
+     * @param bl            back-left motor.
+     */
     public FRCDriveTank(SubsystemConfiguration configuration,
                         Motor fr,
                         Motor fl,
@@ -45,11 +68,22 @@ public class FRCDriveTank extends Subsystem {
         drivetrain = new DrivetrainTank(fr, fl, br, bl);
     }
 
+    /**
+     * Drive the drivetrain.
+     *
+     * @param left  power to set to the left side.
+     * @param right power to set to the right side.
+     */
     public void drive(double left,
                       double right) {
         drive(new TranslationTank(left, right));
     }
 
+    /**
+     * Drive the drivetrain.
+     *
+     * @param translation the chassis' desired translation.
+     */
     public void drive(TranslationTank translation) {
         drivetrain.setPower(translation);
     }

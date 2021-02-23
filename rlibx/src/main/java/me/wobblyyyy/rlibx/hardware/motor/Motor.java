@@ -27,7 +27,6 @@
 package me.wobblyyyy.rlibx.hardware.motor;
 
 import me.wobblyyyy.intra.ftc2.utils.math.Comparator;
-import me.wobblyyyy.rlibx.MotorSupplier;
 import me.wobblyyyy.rlibx.interfaces.Component;
 import me.wobblyyyy.rlibx.interfaces.MotorCore;
 
