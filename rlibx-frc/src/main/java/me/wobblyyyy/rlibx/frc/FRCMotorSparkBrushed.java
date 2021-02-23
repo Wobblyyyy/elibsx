@@ -1,4 +1,4 @@
-﻿/*
+/*
  *
  * Copyright (c) 2020, Colin Robertson (wobblyyyy@gmail.com)
  *
@@ -24,13 +24,26 @@
  *
  */
 
-package me.wobblyyyy.rlibx;
+package me.wobblyyyy.rlibx.frc;
+
+
+import com.revrobotics.CANSparkMax;
 
 /**
- * The main class used for interacting with rlibx through code.
+ * A variation of the {@link FRCMotorSpark} motor class, designed specifically
+ * and only for use with <b>BRUSHED</b> CAN Spark Max motors.
  *
  * @author Colin Robertson
  * @since 0.2.0
+ * @see FRCMotorSparkBrushless
  */
-public class RLib {
+public class FRCMotorSparkBrushed extends FRCMotorSpark {
+    public FRCMotorSparkBrushed(int id,
+                                CANSparkMax.IdleMode idleMode) {
+        super(
+                id,
+                FRCMotorSpark.BRUSHED,
+                idleMode
+        );
+    }
 }

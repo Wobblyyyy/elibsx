@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/elibsx.iml" filepath="$PROJECT_DIR$/.idea/elibsx.iml" />
       <module fileurl="file://$PROJECT_DIR$/rlibx/rlibx.iml" filepath="$PROJECT_DIR$/rlibx/rlibx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rlibx-frc/rlibx-frc.iml" filepath="$PROJECT_DIR$/rlibx-frc/rlibx-frc.iml" />
       <module fileurl="file://$PROJECT_DIR$/rlibx-gui/rlibx-gui.iml" filepath="$PROJECT_DIR$/rlibx-gui/rlibx-gui.iml" />
     </modules>
   </component>

@@ -1,4 +1,4 @@
-﻿/*
+/*
  *
  * Copyright (c) 2020, Colin Robertson (wobblyyyy@gmail.com)
  *
@@ -24,13 +24,41 @@
  *
  */
 
-package me.wobblyyyy.rlibx;
+package me.wobblyyyy.rlibx.frc;
+
+import edu.wpi.first.wpilibj.Encoder;
+import me.wobblyyyy.rlibx.interfaces.EncoderCore;
 
 /**
- * The main class used for interacting with rlibx through code.
+ * {@code rlibx}-enabled encoders for use in... encoding.
  *
  * @author Colin Robertson
  * @since 0.2.0
  */
-public class RLib {
+public class FRCEncoder implements EncoderCore {
+    private final Encoder encoder;
+    private final double cpr;
+
+    public FRCEncoder(int channelA,
+                      int channelB,
+                      double cpr) {
+        encoder = new Encoder(channelA, channelB);
+
+        this.cpr = cpr;
+    }
+
+    @Override
+    public int getCount() {
+        return encoder.get();
+    }
+
+    @Override
+    public double getCpr() {
+        return cpr;
+    }
+
+    @Override
+    public void init() {
+
+    }
 }

@@ -1,4 +1,4 @@
-﻿/*
+/*
  *
  * Copyright (c) 2020, Colin Robertson (wobblyyyy@gmail.com)
  *
@@ -24,13 +24,38 @@
  *
  */
 
-package me.wobblyyyy.rlibx;
+package me.wobblyyyy.rlibx.frc;
+
+import edu.wpi.first.wpilibj.Talon;
+import me.wobblyyyy.rlibx.interfaces.MotorCore;
 
 /**
- * The main class used for interacting with rlibx through code.
+ * A wrapper class that implements the methods of the {@code MotorCore}
+ * interface and controls a Talon motor.
  *
  * @author Colin Robertson
  * @since 0.2.0
+ * @see FRCMotorTalonSRX
  */
-public class RLib {
+public class FRCMotorTalon implements MotorCore {
+    private final Talon talon;
+
+    public FRCMotorTalon(int id) {
+        talon = new Talon(id);
+    }
+
+    @Override
+    public double getPower() {
+        return talon.get();
+    }
+
+    @Override
+    public void setPower(double power) {
+        talon.set(power);
+    }
+
+    @Override
+    public void init() {
+
+    }
 }
