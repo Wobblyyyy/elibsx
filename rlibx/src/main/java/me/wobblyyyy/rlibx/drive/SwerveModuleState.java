@@ -38,19 +38,42 @@ package me.wobblyyyy.rlibx.drive;
  * @since 0.2.0
  */
 public class SwerveModuleState {
+    /**
+     * The drive motor's power.
+     */
     private final double drive;
+
+    /**
+     * The turn motor's power.
+     */
     private final double turn;
 
+    /**
+     * Create a new SwerveModuleState.
+     *
+     * @param drive the drive motor's power.
+     * @param turn  the turn motor's power.
+     */
     public SwerveModuleState(double drive,
                              double turn) {
         this.drive = drive;
         this.turn = turn;
     }
 
+    /**
+     * Get the drive motor's power.
+     *
+     * @return the drive motor's power.
+     */
     public double getDrive() {
         return drive;
     }
 
+    /**
+     * Get the turn motor's power.
+     *
+     * @return the turn motor's power.
+     */
     public double getTurn() {
         return turn;
     }
