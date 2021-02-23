@@ -26,5 +26,11 @@
 
 package me.wobblyyyy.rlibx.drive;
 
+/**
+ * An implementation of a swerve drivetrain.
+ *
+ * @author Colin Robertson
+ * @since 0.2.0
+ */
 public class DrivetrainSwerve {
 }

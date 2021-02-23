@@ -26,6 +26,12 @@
 
 package me.wobblyyyy.rlibx.drive;
 
+/**
+ * A resource class - represent the power of a tank drivetrain.
+ *
+ * @author Colin Robertson
+ * @since 0.2.0
+ */
 public class PowerTank {
     private final double right;
     private final double left;

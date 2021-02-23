@@ -26,6 +26,17 @@
 
 package me.wobblyyyy.rlibx.drive;
 
+/**
+ * Resource class - represent the power of a single swerve module.
+ *
+ * <p>
+ * This class does NOT use turn angle - rather, it uses turn power. Turn
+ * power can be calculated based on turn angle elsewhere.
+ * </p>
+ *
+ * @author Colin Robertson
+ * @since 0.2.0
+ */
 public class SwerveModuleState {
     private final double drive;
     private final double turn;

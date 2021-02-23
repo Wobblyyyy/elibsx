@@ -26,15 +26,46 @@
 
 package me.wobblyyyy.rlibx.drive;
 
+/**
+ * Various forwards kinematics for use in determining wheel speeds on several
+ * types of chassis, including tank, swerve, and meccanum.
+ *
+ * @author Colin Robertson
+ * @since 0.2.0
+ */
 public class Kinematics {
+    /**
+     * Calculate the power for a meccanum chassis based on a translation.
+     *
+     * @param translation the translation to calculate based on.
+     * @return {@code PowerMeccanum} for the drivetrain.
+     */
     public static PowerMeccanum calculateMeccanum(Translation translation) {
         return null;
     }
 
+    /**
+     * Calculate the power for a swerve chassis based on a translation.
+     *
+     * @param translation the translation to calculate based on.
+     * @return {@code PowerSwerve} for the drivetrain.
+     */
     public static PowerSwerve calculateSwerve(Translation translation) {
         return null;
     }
 
+    /**
+     * Calculate the power for a tank chassis based on an inputted translation.
+     *
+     * <p>
+     * As a note, tank drivetrains use a different type of translation than
+     * all other drivetrains. "Normal" drivetrains use translations, tank
+     * drivetrains use tank translations.
+     * </p>
+     *
+     * @param translation the tank translation to calculate for.
+     * @return calculated power values based on the inputted translation.
+     */
     public static PowerTank calculateTank(TranslationTank translation) {
         return new PowerTank(
                 translation.getX1(),

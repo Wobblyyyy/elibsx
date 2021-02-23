@@ -26,6 +26,13 @@
 
 package me.wobblyyyy.rlibx.drive;
 
+/**
+ * An extension of the Translation class that's customized for tank
+ * drivetrains exclusively.
+ *
+ * @author Colin Robertson
+ * @since 0.2.0
+ */
 public class TranslationTank extends Translation {
     /**
      * Create a new translation.

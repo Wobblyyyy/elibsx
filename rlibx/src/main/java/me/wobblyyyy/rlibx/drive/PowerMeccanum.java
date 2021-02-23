@@ -26,6 +26,12 @@
 
 package me.wobblyyyy.rlibx.drive;
 
+/**
+ * A resource class - represent the power of a meccanum drivetrain.
+ *
+ * @author Colin Robertson
+ * @since 0.2.0
+ */
 public class PowerMeccanum {
     public final double fr;
     public final double fl;

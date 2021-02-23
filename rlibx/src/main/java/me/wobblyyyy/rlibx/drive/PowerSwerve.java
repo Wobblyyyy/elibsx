@@ -26,6 +26,12 @@
 
 package me.wobblyyyy.rlibx.drive;
 
+/**
+ * A resource class - represent the power of a swerve drivetrain.
+ *
+ * @author Colin Robertson
+ * @since 0.2.0
+ */
 public class PowerSwerve {
     private final SwerveModuleState fr;
     private final SwerveModuleState fl;
