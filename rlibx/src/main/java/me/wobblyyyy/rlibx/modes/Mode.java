@@ -24,7 +24,7 @@
  *
  */
 
-package me.wobblyyyy.rlibx.manager;
+package me.wobblyyyy.rlibx.modes;
 
 /**
  * A template mode, which teleop/autonomous/etc will extend.
@@ -207,5 +207,22 @@ public class Mode {
      */
     public boolean isActive() {
         return isActive;
+    }
+
+    /**
+     * Get the currently-active execution thread, if it's alive.
+     *
+     * <p>
+     * If the execution thread is not active, we return {@code null}, as there
+     * IS no currently active execution thread. Whether or not the thread is
+     * defined as active is determined by the {@link Thread#isAlive()} method,
+     * which returns a boolean value, designating whether or not the requested
+     * thread is still alive.
+     * </p>
+     *
+     * @return the mode's execution thread.
+     */
+    public Thread getActiveThread() {
+        return executionThread.isAlive() ? executionThread : null;
     }
 }

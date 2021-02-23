@@ -26,6 +26,13 @@
 
 package me.wobblyyyy.rlibx;
 
+import me.wobblyyyy.rlibx.modes.ModeExecutor;
+import me.wobblyyyy.rlibx.modes.Modes;
+import me.wobblyyyy.rlibx.subsystem.Subsystem;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * The main class used for interacting with rlibx through code.
  *
@@ -33,4 +40,48 @@ package me.wobblyyyy.rlibx;
  * @since 0.2.0
  */
 public class RLib {
+    /**
+     * The locally-stored instance of an {@code rlibx} mode.
+     */
+    public static RLibInstance instance;
+
+    /**
+     * Load an RLib instance based on inputted modes and subsystems.
+     *
+     * @param modes      a HashMap of all of the mode elements that should be
+     *                   added to the robot's execution pool. The keys of this
+     *                   HashMap represent the mode that the following executor
+     *                   will serve for, and the values represent executors
+     *                   that should be executed whenever the given mode is
+     *                   activated.
+     * @param subsystems an ArrayList of all of the subsystems on the robot.
+     *                   These are typically pre-configured. The subsystem
+     *                   manager inside of the {@link RLibCPI} class handles
+     *                   all of the initialization and management of these
+     *                   inputted subsystems, but it's still important to
+     *                   configure the subsystems prior to passing them as
+     *                   parameters to this method.
+     */
+    public static void load(HashMap<Modes, ModeExecutor> modes,
+                            ArrayList<Subsystem> subsystems) {
+        instance = new RLibCPI(modes);
+
+        for (Subsystem s : subsystems) {
+            ((RLibCPI) (instance)).register(s);
+        }
+    }
+
+    /**
+     * Load an RLib instance based on inputted modes and subsystems.
+     *
+     * @param modes a HashMap of all of the mode elements that should be
+     *              added to the robot's execution pool. The keys of this
+     *              HashMap represent the mode that the following executor
+     *              will serve for, and the values represent executors
+     *              that should be executed whenever the given mode is
+     *              activated.
+     */
+    public static void load(HashMap<Modes, ModeExecutor> modes) {
+        instance = new RLibInstance(modes);
+    }
 }

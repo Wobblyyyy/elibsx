@@ -24,7 +24,7 @@
  *
  */
 
-package me.wobblyyyy.rlibx.manager;
+package me.wobblyyyy.rlibx.modes;
 
 /**
  * An enumeration of all the modes which the robot can operate in.

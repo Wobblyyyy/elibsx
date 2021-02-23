@@ -24,7 +24,7 @@
  *
  */
 
-package me.wobblyyyy.rlibx.manager;
+package me.wobblyyyy.rlibx.modes;
 
 /**
  * A mode, containing a single Runnable element that's executed many times

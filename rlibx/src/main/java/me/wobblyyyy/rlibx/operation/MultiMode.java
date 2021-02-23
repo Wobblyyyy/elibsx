@@ -26,8 +26,8 @@
 
 package me.wobblyyyy.rlibx.operation;
 
-import me.wobblyyyy.rlibx.manager.ModeExecutor;
-import me.wobblyyyy.rlibx.manager.Modes;
+import me.wobblyyyy.rlibx.modes.ModeExecutor;
+import me.wobblyyyy.rlibx.modes.Modes;
 
 import java.util.HashMap;
 

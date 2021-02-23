@@ -24,7 +24,7 @@
  *
  */
 
-package me.wobblyyyy.rlibx.manager;
+package me.wobblyyyy.rlibx.modes;
 
 /**
  * An operation mode that operates entirely linearly.

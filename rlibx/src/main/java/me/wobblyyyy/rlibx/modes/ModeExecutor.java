@@ -24,7 +24,7 @@
  *
  */
 
-package me.wobblyyyy.rlibx.manager;
+package me.wobblyyyy.rlibx.modes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +53,21 @@ public class ModeExecutor extends LinearMode {
      * things with this lovely code.
      */
     private final ArrayList<Mode> modes;
+
+    /**
+     * Add a new thread to an existing array list of threads, only if the
+     * new thread to be added is non-null.
+     *
+     * @param threads the current list of threads.
+     * @param thread  the thread to add to the list.
+     * @return an updated list of threads.
+     */
+    private ArrayList<Thread> addNoNull(ArrayList<Thread> threads,
+                                        Thread thread) {
+        if (thread != null) threads.add(thread);
+
+        return threads;
+    }
 
     /**
      * Create a new ModeExecutor based on a single inputted mode.
@@ -163,5 +178,42 @@ public class ModeExecutor extends LinearMode {
              */
             mode.stop();
         }
+    }
+
+    /**
+     * Get all of the currently active threads.
+     *
+     * <p>
+     * This method works by polling all of the "mode" elements contained in
+     * the {@link ModeExecutor#modes} {@code ArrayList}, checking to see if
+     * their thread is active, and, if it is, adding it to the {@code ArrayList}
+     * of currently-active threads.
+     * </p>
+     *
+     * <p>
+     * In addition to the threads of all of the modes that are part of the
+     * {@code ModeExecutor} in question, this method returns the active thread
+     * for the {@code ModeExecutor} that it's being called from. That made
+     * absolutely no sense, so let me try again.
+     * </p>
+     *
+     * <p>
+     * Not only does this method return all of the modes that are contained
+     * in the mode array list provided earlier, this method also adds the
+     * thread for the mode executor you're looking at right now to the list.
+     * </p>
+     *
+     * @return an {@code ArrayList} of all of the currently active threads.
+     */
+    public ArrayList<Thread> getActiveThreads() {
+        ArrayList<Thread> threads = new ArrayList<>();
+
+        threads = addNoNull(threads, getActiveThread());
+
+        for (Mode mode : modes) {
+            threads = addNoNull(threads, mode.getActiveThread());
+        }
+
+        return threads;
     }
 }
