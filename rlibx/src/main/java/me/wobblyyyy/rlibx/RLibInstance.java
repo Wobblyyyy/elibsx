@@ -89,4 +89,13 @@ public class RLibInstance {
     public void robot() {
         mode.setMode(Modes.ROBOT);
     }
+
+    /**
+     * Get the instance's mode execution HashMap.
+     *
+     * @return the instance's mode execution HashMap.
+     */
+    protected MultiMode getMultiMode() {
+        return mode;
+    }
 }

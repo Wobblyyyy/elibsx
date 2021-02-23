@@ -51,10 +51,26 @@ public class RLibCPI extends RLibInstance {
     public SubsystemManager manager;
 
     /**
+     * Create a new RLibCPI instance, using the inputted instance's mode
+     * manager's mode HashMap.
+     *
+     * @param rLibInstance the instance that should be upcasted.
+     */
+    public RLibCPI(RLibInstance rLibInstance) {
+        this(rLibInstance.getMultiMode().getManager().getModes());
+    }
+
+    /**
      * Create a new {@code RLibCPI} instance.
      *
      * @param modes a {@code HashMap} of all of the modes that are used or
-     *              executed by the robot at any point.
+     *              executed by the robot at any point. This HashMap should
+     *              contain any of the modes that will be used and executor
+     *              code that should be executed once that mode's init phase
+     *              is called. If a {@code Modes} element is omitted, and your
+     *              code attempts to activate that mode, you'll get a
+     *              NullPointerException, and things won't be very cool at
+     *              all. So yeah. Don't do that.
      */
     public RLibCPI(HashMap<Modes, ModeExecutor> modes) {
         super(modes);

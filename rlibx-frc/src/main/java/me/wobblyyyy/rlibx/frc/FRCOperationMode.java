@@ -69,7 +69,7 @@ public class FRCOperationMode extends TimedRobot {
     public FRCOperationMode(HashMap<Modes, ModeExecutor> modes) {
         RLib.load(modes);
 
-        cpi = (RLibCPI) RLib.instance;
+        cpi = new RLibCPI(RLib.instance);
     }
 
     /**

@@ -188,4 +188,13 @@ public class MultiMode {
                 executor
         );
     }
+
+    /**
+     * Get this {@code MultiMode}'s manager class.
+     *
+     * @return this {@code MultiMode}'s manager class.
+     */
+    public MultiModeManager getManager() {
+        return manager;
+    }
 }
