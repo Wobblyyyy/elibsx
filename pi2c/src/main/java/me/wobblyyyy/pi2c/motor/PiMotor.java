@@ -24,38 +24,27 @@
  *
  */
 
-package me.wobblyyyy.rlibx.pi;
+package me.wobblyyyy.pi2c.motor;
 
-import me.wobblyyyy.drivepi.motors.MotorDriver;
-import me.wobblyyyy.rlibx.hardware.motor.Motor;
-import me.wobblyyyy.rlibx.hardware.motor.MotorConfig;
+public class PiMotor {
+    private final int id;
+    private double power;
 
-public class PiMotorFactory {
-    private static boolean hasStarted = false;
+    public PiMotor(int id) {
+        this.id = id;
 
-    private static void ensureThreadStarted() {
-        if (!hasStarted) {
-            hasStarted = true;
-
-            MotorDriver.init();
-        }
+        PiMotorRegistry.registerMotor(this);
     }
 
-    public static Motor newMotor(int id) {
-        ensureThreadStarted();
-
-        return new Motor(
-                new PiMotorCore(id)
-        );
+    public void setPower(double power) {
+        this.power = power;
     }
 
-    public static Motor newMotor(int id,
-                                MotorConfig config) {
-        ensureThreadStarted();
+    public double getPower() {
+        return power;
+    }
 
-        return new Motor(
-                new PiMotorCore(id),
-                config
-        );
+    public int getId() {
+        return id;
     }
 }

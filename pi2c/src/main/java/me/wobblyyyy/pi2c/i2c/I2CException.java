@@ -24,27 +24,18 @@
  *
  */
 
-package me.wobblyyyy.drivepi.motors;
+package me.wobblyyyy.pi2c.i2c;
 
-public class PiMotor {
-    private final int id;
-    private double power = 0;
-
-    public PiMotor(int id) {
-        this.id = id;
-
-        MotorRegistry.registerMotor(this);
+public class I2CException extends Exception {
+    public I2CException(String exception) {
+        super(exception);
     }
 
-    public void setPower(double power) {
-        this.power = power;
-    }
-
-    public double getPower() {
-        return Math.abs(power) > 0 ? power : 0;
-    }
-
-    public int getId() {
-        return id;
+    public static void throwNew(String exception) {
+        try {
+            throw new I2CException(exception);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -24,33 +24,40 @@
  *
  */
 
-package me.wobblyyyy.drivepi.motors;
+package me.wobblyyyy.pi2c.i2c;
 
-public class UpdaterThreadContainer {
-    protected static final String THREAD_NAME = "drivepi-motors-thread";
+import java.nio.ByteBuffer;
 
-    private static boolean shouldRun = true;
+public class I2CObject {
+    private byte[] bytes = new byte[0];
+    private ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
 
-    private static final Runnable update = () -> {
-        while (shouldRun) {
-            Thread.onSpinWait();
-
-            MotorRegistry.update();
-        }
-    };
-
-    private static final Thread updater = new Thread(
-            update,
-            THREAD_NAME
-    );
-
-    public static void start() {
-        shouldRun = true;
-
-        updater.start();
+    private void init(byte[] bytes) {
+        this.bytes = bytes;
+        this.byteBuffer = ByteBuffer.wrap(bytes);
     }
 
-    public static void stop() {
-        shouldRun = false;
+    public I2CObject(String contents) {
+        init(contents.getBytes());
+    }
+
+    public I2CObject(byte[] bytes) {
+        init(bytes);
+    }
+
+    public void setBytes(byte[] bytes) {
+
+    }
+
+    public void setByteBuffer(ByteBuffer byteBuffer) {
+        this.byteBuffer = byteBuffer;
+    }
+
+    public byte[] getBytes() {
+        return bytes;
+    }
+
+    public ByteBuffer getByteBuffer() {
+        return byteBuffer;
     }
 }

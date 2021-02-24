@@ -24,18 +24,39 @@
  *
  */
 
-package me.wobblyyyy.drivepi.motors;
+package me.wobblyyyy.pi2c.motor;
+
+import me.wobblyyyy.pi2c.i2c.I2CBusDevice;
+import me.wobblyyyy.pi2c.i2c.I2CDriver;
+import me.wobblyyyy.pi2c.i2c.I2CObject;
 
 import java.util.ArrayList;
 
-public class MotorRegistry {
-    private static final ArrayList<PiMotor> motors = new ArrayList<>();
+public class MotorI2C implements I2CDriver {
+    private static final int CONTROLLER_ID = 0x01;
+    private static final int ADDRESS = 0x3C;
+    private static final int ADDRESS_SIZE = 0x7;
+    private static final int CLOCK_FREQUENCY = 0x186A0;
 
-    public static void registerMotor(PiMotor motor) {
-        motors.add(motor);
+    private final I2CBusDevice device;
+
+    public MotorI2C() {
+        device = new I2CBusDevice(
+                CONTROLLER_ID,
+                ADDRESS,
+                ADDRESS_SIZE,
+                CLOCK_FREQUENCY
+        );
     }
 
-    public static void update() {
-        I2CBridge.send(motors);
+    @Override
+    public void write() {
+        I2CObject encoded = new I2CObject(PiMotorRegistry.getFormatted());
+        device.write(encoded);
+    }
+
+    @Override
+    public String read() {
+        return "";
     }
 }

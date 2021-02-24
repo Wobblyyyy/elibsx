@@ -24,14 +24,9 @@
  *
  */
 
-package me.wobblyyyy.drivepi.motors;
+package me.wobblyyyy.pi2c.i2c;
 
-public class MotorDriver {
-    public static void init() {
-        UpdaterThreadContainer.start();
-    }
-
-    public static void disconnect() {
-        UpdaterThreadContainer.stop();
-    }
+public interface I2CDriver {
+    void write();
+    String read();
 }
