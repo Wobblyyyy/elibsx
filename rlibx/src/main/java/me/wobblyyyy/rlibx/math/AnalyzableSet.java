@@ -104,6 +104,11 @@ public class AnalyzableSet {
     private double maximumDeviation;
 
     /**
+     * Is the current execution cycle the first execution cycle?
+     */
+    private boolean isFirst = true;
+
+    /**
      * Create a new {@code AnalyzableSet} without any values.
      */
     public AnalyzableSet() {
@@ -144,6 +149,17 @@ public class AnalyzableSet {
      * @param number the number to analyze.
      */
     private void analyze(double number) {
+        if (isFirst) {
+            isFirst = false;
+            currentSum = 0;
+            currentCount = 0;
+            currentAverage = 0;
+            minimum = number;
+            maximum = number;
+            minimumDeviation = number;
+            maximumDeviation = number;
+        }
+
         data.add(number);
 
         currentSum += number;
