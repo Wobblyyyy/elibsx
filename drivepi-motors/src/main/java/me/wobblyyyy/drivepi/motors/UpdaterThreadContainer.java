@@ -31,14 +31,11 @@ public class UpdaterThreadContainer {
 
     private static boolean shouldRun = true;
 
-    private static final Runnable update = new Runnable() {
-        @Override
-        public void run() {
-            while (shouldRun) {
-                Thread.onSpinWait();
+    private static final Runnable update = () -> {
+        while (shouldRun) {
+            Thread.onSpinWait();
 
-                MotorRegistry.update();
-            }
+            MotorRegistry.update();
         }
     };
 
