@@ -27,6 +27,17 @@
 package me.wobblyyyy.pi2c.i2c;
 
 public class I2CException extends Exception {
+    protected static final String CONTROLLER_EXCEPTION =
+            "You can't initialize two I2C devices with the same controller ID!";
+    protected static final String ADDRESS_EXCEPTION =
+            "You can't initialize two I2C devices with the same address!";
+    protected static final String ADDRESS_SIZE_EXCEPTION =
+            "Invalid address size when creating an I2CBusDevice.";
+    protected static final String CLOCK_EXCEPTION =
+            "Invalid I2C clock rate - use 0x186A0 if you're unsure.";
+    protected static final String EXCEPTION =
+            "There was an unspecified error while using pi2c.";
+
     public I2CException(String exception) {
         super(exception);
     }

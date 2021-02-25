@@ -30,18 +30,19 @@ import jdk.dio.DeviceManager;
 import jdk.dio.i2cbus.I2CDevice;
 import jdk.dio.i2cbus.I2CDeviceConfig;
 
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
+
+import static me.wobblyyyy.pi2c.i2c.I2CException.*;
 
 public class I2CBusDevice {
     public static final int ADDRESS = 0x0;
     public static final int ADDRESS_SIZE = 0x7;
     public static final int CLOCK_FREQUENCY = 0x186A0;
 
-    private static final String CONTROLLER_EXCEPTION =
-            "You can't initialize two I2C devices with the same controller ID!";
-    private static final String ADDRESS_EXCEPTION =
-            "You can't initialize two I2C devices with the same address!";
+    public static final int MIN_ADDRESS_SIZE = 0x7;
+    public static final int MAX_ADDRESS_SIZE = 0x7;
+    public static final int MIN_CLOCK_FREQUENCY = 0x186A0;
+    public static final int MAX_CLOCK_FREQUENCY = 0x186A0;
 
     private static final ArrayList<Integer> controllerIds = new ArrayList<>();
     private static final ArrayList<Integer> addresses = new ArrayList<>();
@@ -49,6 +50,16 @@ public class I2CBusDevice {
     private I2CDeviceConfig config;
     private I2CDevice servant;
     private boolean busInitializedYet = false;
+
+    private static boolean isClockFrequencyGood(int clockFrequency) {
+        return MIN_CLOCK_FREQUENCY <= clockFrequency &&
+                clockFrequency <= MAX_CLOCK_FREQUENCY;
+    }
+
+    private static boolean isAddressSizeGood(int addressSize) {
+        return MIN_ADDRESS_SIZE <= addressSize &&
+                addressSize <= MAX_ADDRESS_SIZE;
+    }
 
     public I2CBusDevice(int controllerId,
                         int address,
@@ -58,6 +69,10 @@ public class I2CBusDevice {
             I2CException.throwNew(CONTROLLER_EXCEPTION);
         } else if (addresses.contains(address)) {
             I2CException.throwNew(ADDRESS_EXCEPTION);
+        } else if (!isClockFrequencyGood(clockFrequency)) {
+            I2CException.throwNew(CLOCK_EXCEPTION);
+        } else if (!isAddressSizeGood(addressSize)) {
+            I2CException.throwNew(ADDRESS_SIZE_EXCEPTION);
         } else {
             this.config = new I2CDeviceConfig(
                     controllerId,
