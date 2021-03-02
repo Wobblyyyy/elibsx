@@ -24,39 +24,51 @@
  *
  */
 
-package me.wobblyyyy.pi2c.motor;
+package me.wobblyyyy.piebus.gpio;
 
-import me.wobblyyyy.pi2c.i2c.I2CBusDevice;
-import me.wobblyyyy.pi2c.i2c.I2CDriver;
-import me.wobblyyyy.pi2c.i2c.I2CObject;
+/**
+ * Resource class for a set of pin addresses that are used later in connecting
+ * with GPIO pins on a Raspberry Pi.
+ *
+ * @author Colin Robertson
+ * @since 0.0.0
+ */
+public class PinSet {
+    private final Pin a;
+    private final Pin b;
+    private final Pin c;
+    private final Pin d;
+    private final Pin clock;
 
-import java.util.ArrayList;
-
-public class MotorI2C implements I2CDriver {
-    private static final int CONTROLLER_ID = 0x01;
-    private static final int ADDRESS = 0x3C;
-    private static final int ADDRESS_SIZE = 0x7;
-    private static final int CLOCK_FREQUENCY = 0x186A0;
-
-    private final I2CBusDevice device;
-
-    public MotorI2C() {
-        device = new I2CBusDevice(
-                CONTROLLER_ID,
-                ADDRESS,
-                ADDRESS_SIZE,
-                CLOCK_FREQUENCY
-        );
+    public PinSet(PinAddress aA,
+                  PinAddress aB,
+                  PinAddress aC,
+                  PinAddress aD,
+                  PinAddress aClock) {
+        a = new Pin(aA);
+        b = new Pin(aB);
+        c = new Pin(aC);
+        d = new Pin(aD);
+        clock = new Pin(aClock);
     }
 
-    @Override
-    public void write() {
-        I2CObject encoded = new I2CObject(PiMotorRegistry.getFormatted());
-        device.write(encoded);
+    public Pin getA() {
+        return a;
     }
 
-    @Override
-    public String read() {
-        return "";
+    public Pin getB() {
+        return b;
+    }
+
+    public Pin getC() {
+        return c;
+    }
+
+    public Pin getD() {
+        return d;
+    }
+
+    public Pin getClock() {
+        return clock;
     }
 }

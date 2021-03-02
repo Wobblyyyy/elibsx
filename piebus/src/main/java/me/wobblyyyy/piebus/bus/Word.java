@@ -24,9 +24,34 @@
  *
  */
 
-package me.wobblyyyy.pi2c.i2c;
+package me.wobblyyyy.piebus.bus;
 
-public interface I2CDriver {
-    void write();
-    String read();
+public class Word {
+    private final boolean a;
+    private final boolean b;
+    private final boolean c;
+    private final boolean d;
+
+    public Word(boolean a,
+                boolean b,
+                boolean c,
+                boolean d) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+    }
+
+    public Word(boolean[] bits) {
+        this(
+                bits[0],
+                bits[1],
+                bits[2],
+                bits[3]
+        );
+    }
+
+    public boolean[] getBits() {
+        return new boolean[] {a, b, c, d};
+    }
 }

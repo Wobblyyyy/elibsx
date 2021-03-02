@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/elibsx.iml" filepath="$PROJECT_DIR$/.idea/elibsx.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pi2c/pi2c.iml" filepath="$PROJECT_DIR$/pi2c/pi2c.iml" />
+      <module fileurl="file://$PROJECT_DIR$/piebus/piebus.iml" filepath="$PROJECT_DIR$/piebus/piebus.iml" />
       <module fileurl="file://$PROJECT_DIR$/rlibx/rlibx.iml" filepath="$PROJECT_DIR$/rlibx/rlibx.iml" />
       <module fileurl="file://$PROJECT_DIR$/rlibx-frc/rlibx-frc.iml" filepath="$PROJECT_DIR$/rlibx-frc/rlibx-frc.iml" />
       <module fileurl="file://$PROJECT_DIR$/rlibx-gui/rlibx-gui.iml" filepath="$PROJECT_DIR$/rlibx-gui/rlibx-gui.iml" />

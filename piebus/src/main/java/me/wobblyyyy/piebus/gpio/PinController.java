@@ -24,40 +24,22 @@
  *
  */
 
-package me.wobblyyyy.pi2c.i2c;
+package me.wobblyyyy.piebus.gpio;
 
-import java.nio.ByteBuffer;
+import com.pi4j.io.gpio.GpioController;
+import com.pi4j.io.gpio.GpioFactory;
 
-public class I2CObject {
-    private byte[] bytes = new byte[0];
-    private ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
+/**
+ * Manager class that stores the gpio controller used for all gpio in, out,
+ * hula-hoop, fire-breathing, etc. operations. You get the point.
+ *
+ * @author Colin Robertson
+ * @since 0.0.0
+ */
+public class PinController {
+    private static final GpioController controller = GpioFactory.getInstance();
 
-    private void init(byte[] bytes) {
-        this.bytes = bytes;
-        this.byteBuffer = ByteBuffer.wrap(bytes);
-    }
-
-    public I2CObject(String contents) {
-        init(contents.getBytes());
-    }
-
-    public I2CObject(byte[] bytes) {
-        init(bytes);
-    }
-
-    public void setBytes(byte[] bytes) {
-
-    }
-
-    public void setByteBuffer(ByteBuffer byteBuffer) {
-        this.byteBuffer = byteBuffer;
-    }
-
-    public byte[] getBytes() {
-        return bytes;
-    }
-
-    public ByteBuffer getByteBuffer() {
-        return byteBuffer;
+    public static GpioController getController() {
+        return controller;
     }
 }

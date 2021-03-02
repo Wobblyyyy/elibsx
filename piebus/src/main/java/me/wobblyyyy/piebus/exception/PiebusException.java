@@ -24,27 +24,28 @@
  *
  */
 
-package me.wobblyyyy.pi2c.motor;
+package me.wobblyyyy.piebus.exception;
 
-public class PiMotor {
-    private final int id;
-    private double power;
+/**
+ * Helper class for managing exceptions that may be thrown at some point
+ * during program execution.
+ *
+ * @author Colin Robertson
+ * @since 0.0.0
+ */
+public class PiebusException extends Exception {
+    public static final String INVALID_ADDRESS_GROUND =
+            "The address you entered is reserved as a ground pin.";
+    public static final String INVALID_ADDRESS_POWER =
+            "The address you entered is reserved as a power pin.";
+    public static final String INVALID_MODE =
+            "Pins can only be in INPUT or OUTPUT mode (as of now).";
 
-    public PiMotor(int id) {
-        this.id = id;
-
-        PiMotorRegistry.registerMotor(this);
+    public PiebusException(String exception) {
+        super(exception);
     }
 
-    public void setPower(double power) {
-        this.power = power;
-    }
-
-    public double getPower() {
-        return power;
-    }
-
-    public int getId() {
-        return id;
+    public static void throwNew(String exception) throws PiebusException {
+        throw new PiebusException(exception);
     }
 }
